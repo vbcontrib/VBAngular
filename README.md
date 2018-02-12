@@ -19,12 +19,12 @@ npm install -g @angular/cli
 * Change into the project directory, and further to the subfolder `roamclip`.
 * Enter the following line to restore the npm modules into the node_modules folder.
 ```
-D:\GitHubDev\VbAngular\src\RoamingClipBoardApi\roamclip>npm install
+D:\GitHubDev\VbAngular\src\RoamingClipBoardApi>npm install
 ```
 
 * Use `ng build` to let WebPack build the TypeScript libs (and also later the project's TypeScript code) into a package bundle.
 ```
-D:\GitHubDev\VbAngular\src\RoamingClipBoardApi\roamclip>ng build
+D:\GitHubDev\VbAngular\src\RoamingClipBoardApi>ng build
 Date: 2018-02-12T15:16:38.258Z
 Hash: 366b298126bdda8bb2dc
 Time: 4630ms
@@ -37,6 +37,6 @@ chunk {vendor} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.43 MB [initial]
 
 At this point, try
 ```
-D:\GitHubDev\VbAngular\src\RoamingClipBoardApi\roamclip>ng serve
+D:\GitHubDev\VbAngular\src\RoamingClipBoardApi>ng serve
 ```
 and open http://localhost:4200 in the browser to try out the Angular App outside of the VB ASP.NET Core project's IIS or Kestrel WebServer.
