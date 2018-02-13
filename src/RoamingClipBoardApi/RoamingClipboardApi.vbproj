@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Include="wwwroot\index.html">
+    <Page Include="wwwroot\index_old.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="wwwroot\placeholder.txt" />
