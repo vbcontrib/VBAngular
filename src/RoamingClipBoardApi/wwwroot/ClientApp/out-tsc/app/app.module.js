@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var ngx_bootstrap_1 = require("ngx-bootstrap");
 var app_component_1 = require("./app.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -18,6 +19,7 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent
             ],
             imports: [
+                ngx_bootstrap_1.AlertModule.forRoot(),
                 platform_browser_1.BrowserModule
             ],
             providers: [],

@@ -30,7 +30,11 @@ Public Class Startup
 
         app.
         UseStaticFiles.
-        UseMvc
+        UseMvc(Sub(cfg)
+                   cfg.MapRoute("Default",
+                                "{controller}/{action}/{id?}",
+                                New With {.Controller = "App", .Action = "Index"})
+               End Sub)
 
     End Sub
 End Class

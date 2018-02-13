@@ -21,11 +21,18 @@ Public Class EntriesController
         Return Await Task.FromResult(entries)
     End Function
 
-    ' GET api/entry/guid
+    ' GET api/entries/guid
     <HttpGet("{id}")>
     Public Async Function [Get](ByVal id As Guid) As Task(Of Entry)
         Return Await (New RoamingClipboardContext).Entries.
                             Where(Function(item) item.IdEntry = id).FirstOrDefaultAsync
     End Function
+
+    ' GET api/entries/guid
+    <HttpGet("{id}")>
+    Public Async Function [Get](ByVal id As Integer) As Task(Of Integer)
+        Return Await Task.FromResult(id)
+    End Function
+
 
 End Class
