@@ -62,7 +62,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "div.panel-heading {\r\n    font-size: x-large;\r\n    background-color: #303030;\r\n    color: white;\r\n    padding: 3px;\r\n}\r\n", ""]);
+exports.push([module.i, "div.panel-heading {\r\n    font-size: x-large;\r\n    padding: 3px;\r\n}\r\n", ""]);
 
 // exports
 
