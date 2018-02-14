@@ -1,0 +1,1 @@
+{"version":3,"file":"categories.component.js","sourceRoot":"","sources":["../../../../../ClientApp/app/categories/categories.component.ts"],"names":[],"mappings":";;;;;;;;AAAA,sCAA0C;AAM1C;IAJA;QAKI,cAAS,GAAW,sBAAsB,CAAC;IAC/C,CAAC;IAFY,mBAAmB;QAJ/B,gBAAS,CAAC;YACP,QAAQ,EAAE,qBAAqB;YAC/B,WAAW,EAAE,6BAA6B;SAC7C,CAAC;OACW,mBAAmB,CAE/B;IAAD,0BAAC;CAAA,AAFD,IAEC;AAFY,kDAAmB"}

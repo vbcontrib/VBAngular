@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Index.html" />
+    <None Remove="ClientApp\app\categories\categories.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,12 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Index.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Include="wwwroot\placeholder.txt" />
   </ItemGroup>
 
@@ -48,15 +42,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <TypeScriptCompile Include="ClientApp\app\categories\categories.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Views\App\Index.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

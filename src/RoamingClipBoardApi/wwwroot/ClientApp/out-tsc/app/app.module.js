@@ -10,13 +10,15 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var ngx_bootstrap_1 = require("ngx-bootstrap");
 var app_component_1 = require("./app.component");
+var categories_component_1 = require("./categories/categories.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                categories_component_1.CategoriesComponent
             ],
             imports: [
                 ngx_bootstrap_1.AlertModule.forRoot(),

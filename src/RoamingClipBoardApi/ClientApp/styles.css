@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+div.panel-heading {
+    font-size: x-large;
+    background-color: #303030;
+    color: white;
+    padding: 3px;
+}

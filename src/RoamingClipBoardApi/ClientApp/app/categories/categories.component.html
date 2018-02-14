@@ -1,0 +1,25 @@
+﻿<div class='panel panel/primary'>
+    <div class='panel-heading'>
+        Categories
+    </div>
+    <div class='panel-body'>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Last used</th>
+                        <th>Link count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let item of Categories'>
+                        <td>{{ category.Description }}</td>
+                        <td>{{ category.LastUsed }}</td>
+                        <td>{{ category.LinkCount }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
