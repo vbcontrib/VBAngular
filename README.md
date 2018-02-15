@@ -16,7 +16,7 @@ npm install -g @angular/cli
 ```
 
 ## Prerequisites after getting the project from GitHub
-* Change into the project directory, and further to the subfolder `roamclip`.
+* Change into the project directory, and further to the project subfolder `RoamingClipboardApi`.
 * Enter the following line to restore the npm modules into the node_modules folder.
 ```
 D:\GitHubDev\VbAngular\src\RoamingClipBoardApi>npm install
@@ -35,8 +35,7 @@ chunk {styles} styles.bundle.js, styles.bundle.js.map (styles) 11.4 kB [initial]
 chunk {vendor} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.43 MB [initial] [rendered]
 ```
 
-At this point, try
-```
-D:\GitHubDev\VbAngular\src\RoamingClipBoardApi>ng serve
-```
-and open http://localhost:4200 in the browser to try out the Angular App outside of the VB ASP.NET Core project's IIS or Kestrel WebServer.
+* Use `ng build --watch` to set up an continuing process which does that: Whenever a file from the frontend (Angular) project changes, the build process automatically restarts. This way, you can develop the frontend and test it out without any noticeable delay.
+
+* Set RoamingWebApi as the startproject, run and test it in the browser.
+(Development is in progress, it is not ready yet, though, but you can see that it works in principle)
