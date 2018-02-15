@@ -70,8 +70,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var ngx_bootstrap_1 = __webpack_require__("../../../../ngx-bootstrap/index.js");
+var http_1 = __webpack_require__("../../../common/esm5/http.js");
 var app_component_1 = __webpack_require__("../../../../../ClientApp/app/app.component.ts");
 var categories_component_1 = __webpack_require__("../../../../../ClientApp/app/categories/categories.component.ts");
+var dataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/dataService.ts");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -83,9 +85,10 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 ngx_bootstrap_1.AlertModule.forRoot(),
-                platform_browser_1.BrowserModule
+                platform_browser_1.BrowserModule,
+                http_1.HttpClientModule
             ],
-            providers: [],
+            providers: [dataService_1.DataService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
@@ -99,7 +102,7 @@ exports.AppModule = AppModule;
 /***/ "../../../../../ClientApp/app/categories/categories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='panel panel/primary'>\r\n    <div class='panel-heading'>\r\n        Categories\r\n        <button type=\"button\" \r\n                class=\"btn btn-default\">Add Category</button>\r\n    </div>\r\n    <div class='panel-body'>\r\n        <div class='table-responsive'>\r\n            <table class='table'>\r\n                <thead>\r\n                    <tr>\r\n                        <th>Category</th>\r\n                        <th>Last used</th>\r\n                        <th>Link count</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr *ngFor='let item of Categories'>\r\n                        <td>{{ category.Description }}</td>\r\n                        <td>{{ category.LastUsed }}</td>\r\n                        <td>{{ category.LinkCount }}</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class='panel panel/primary'>\r\n    <div class='panel-heading'>\r\n        {{tableHeader}}\r\n        <button type=\"button\" \r\n                class=\"btn btn-default\">Add Category</button>\r\n    </div>\r\n    <div class='panel-body'>\r\n        <div class='table-responsive'>\r\n            <table class='table'>\r\n                <thead>\r\n                    <tr>\r\n                        <th>Category</th>\r\n                        <th>Last used</th>\r\n                        <th>Link count</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr *ngFor='let item of categories'>\r\n                        <td>{{ item.categoryName }}</td>\r\n                        <td>{{ item.dateLastUsed }}</td>\r\n                        <td>{{ item.linkCount }}</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -114,21 +117,89 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var dataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/dataService.ts");
 var CategoriesComponent = /** @class */ (function () {
-    function CategoriesComponent() {
-        this.pageTitel = 'Clipboard Categories';
+    function CategoriesComponent(data) {
+        this.data = data;
+        this.tableHeader = 'Clipboard Categories';
+        this.categories = [];
     }
+    CategoriesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.loadCategories().
+            subscribe(function (result) {
+            if (result) {
+                _this.categories = _this.data.categories;
+            }
+            else {
+                _this.categories = [{
+                        categoryName: "Car related",
+                        dateLastUsed: "2018-02-15",
+                        linkCount: 9
+                    }, {
+                        categoryName: "Azure",
+                        dateLastUsed: "2018-02-15",
+                        linkCount: 13
+                    }];
+            }
+        });
+    };
     CategoriesComponent = __decorate([
         core_1.Component({
             selector: 'roamclip-categories',
             template: __webpack_require__("../../../../../ClientApp/app/categories/categories.component.html")
-        })
+        }),
+        __metadata("design:paramtypes", [dataService_1.DataService])
     ], CategoriesComponent);
     return CategoriesComponent;
 }());
 exports.CategoriesComponent = CategoriesComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../ClientApp/app/shared/dataService.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_1 = __webpack_require__("../../../common/esm5/http.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var DataService = /** @class */ (function () {
+    function DataService(httpClient) {
+        this.httpClient = httpClient;
+        this.categories = [];
+    }
+    DataService.prototype.loadCategories = function () {
+        var _this = this;
+        return this.httpClient.get("/api/categoriesinfo")
+            .map(function (data) {
+            _this.categories = data;
+            return true;
+        });
+    };
+    DataService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.HttpClient])
+    ], DataService);
+    return DataService;
+}());
+exports.DataService = DataService;
 
 
 /***/ }),

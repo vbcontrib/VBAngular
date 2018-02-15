@@ -1,38 +1,36 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+import { DataService } from '../shared/dataService';
 
 @Component({
     selector: 'roamclip-categories',
     templateUrl: './categories.component.html'
 })
-export class CategoriesComponent {
-    pageTitel: string = 'Clipboard Categories';
+export class CategoriesComponent implements OnInit {
+    constructor(private data: DataService) {
+    }
+
+    tableHeader: string = 'Clipboard Categories';
+    public categories = [];
+
+    ngOnInit(): void {
+        this.data.loadCategories().
+            subscribe((result) => {
+
+                if (result) {
+                    this.categories = this.data.categories;
+                }
+                else {
+                    this.categories = [{
+                        categoryName: "Car related",
+                        dateLastUsed: "2018-02-15",
+                        linkCount: 9
+                    }, {
+                        categoryName: "Azure",
+                        dateLastUsed: "2018-02-15",
+                        linkCount: 13
+                    }]
+                }
+            })
+    }
 }
 
-export class CategoriesMock {
-    public categories = [{
-        description: "Car related",
-        lastUsed: "2018-02-15",
-        linkCount: 9
-    }, {
-            description: "Azure",
-            lastUsed: "2018-02-15",
-            linkCount: 13
-        }, {
-            description: "Commodore 64",
-            lastUsed: "2018-02-11",
-            linkCount: 7
-        }, {
-            description: "Visual Basic",
-            lastUsed: "2018-02-16",
-            linkCount: 11
-        }, {
-            description: ".NET",
-            lastUsed: "2018-02-16",
-            linkCount: 5
-        }, {
-            description: "C#",
-            lastUsed: "2017-12-24",
-            linkCount: 2
-        }
-    ]
-}

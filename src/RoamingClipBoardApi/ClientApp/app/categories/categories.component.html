@@ -1,6 +1,6 @@
 ﻿<div class='panel panel/primary'>
     <div class='panel-heading'>
-        Categories
+        {{tableHeader}}
         <button type="button" 
                 class="btn btn-default">Add Category</button>
     </div>
@@ -15,10 +15,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let item of Categories'>
-                        <td>{{ category.Description }}</td>
-                        <td>{{ category.LastUsed }}</td>
-                        <td>{{ category.LinkCount }}</td>
+                    <tr *ngFor='let item of categories'>
+                        <td>{{ item.categoryName }}</td>
+                        <td>{{ item.dateLastUsed }}</td>
+                        <td>{{ item.linkCount }}</td>
                     </tr>
                 </tbody>
             </table>
