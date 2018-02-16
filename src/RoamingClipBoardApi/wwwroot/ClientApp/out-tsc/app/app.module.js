@@ -13,9 +13,12 @@ var http_1 = require("@angular/common/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var categories_component_1 = require("./categories/categories.component");
+var links_component_1 = require("./links/links.component");
 var dataService_1 = require("./shared/dataService");
 var appRoutes = [
-    { path: 'app/index', redirectTo: 'ClientApp/dist/index.html', pathMatch: 'full' }
+    { path: 'categories', component: categories_component_1.CategoriesComponent },
+    { path: 'links', component: links_component_1.LinksComponent },
+    { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -24,7 +27,8 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                categories_component_1.CategoriesComponent
+                categories_component_1.CategoriesComponent,
+                links_component_1.LinksComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),

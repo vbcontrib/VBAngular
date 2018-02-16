@@ -1,0 +1,29 @@
+﻿<div class='panel panel/primary'>
+    <div class='panel-heading'>
+        {{tableHeader}}
+        <button type="button" 
+                class="btn btn-default">Add Link</button>
+    </div>
+    <div class='panel-body'>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Link</th>
+                        <th>Category</th>
+                        <th>Best before</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let item of links'>
+                        <td>{{ item.description }}</td>
+                        <td><a href="{{item.link}}" target="_blank">{{ item.linkAbbreviated }}</a></td>
+                        <td>{{ item.categoryName }}</td>
+                        <td>{{ item.bestBefore }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

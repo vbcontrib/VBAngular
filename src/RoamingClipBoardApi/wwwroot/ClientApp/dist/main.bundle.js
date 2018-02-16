@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../ClientApp/$$_lazy_route_resource l
 /***/ "../../../../../ClientApp/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n        <a class=\"navbar-brand\" href=\"#\">{{pageTitle}}</a>\r\n        <button class=\"navbar-toggler\"\r\n                type=\"button\"\r\n                data-toggle=\"collapse\"\r\n                data-target=\"#navbarSupportedContent\"\r\n                aria-controls=\"navbarSupportedContent\"\r\n                aria-expanded=\"false\"\r\n                aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav mr-auto\">\r\n                <li class=\"nav-item active\">\r\n                    <a class=\"nav-link\" href=\"#\">Links <span class=\"sr-only\">(current)</span></a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" href=\"#\">Categories</a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </nav>\r\n    <div class='container-fluid'>\r\n        <roamclip-categories></roamclip-categories>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div>\r\n    <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n        <a class=\"navbar-brand\" href=\"#\">{{pageTitle}}</a>\r\n        <button class=\"navbar-toggler\"\r\n                type=\"button\"\r\n                data-toggle=\"collapse\"\r\n                data-target=\"#navbarSupportedContent\"\r\n                aria-controls=\"navbarSupportedContent\"\r\n                aria-expanded=\"false\"\r\n                aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav mr-auto\">\r\n                <li class=\"nav-item active\">\r\n                    <a class=\"nav-link\" [routerLink]=\"'/links'\">Links<span class=\"sr-only\">(current)</span></a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" [routerLink]=\"'/categories'\">Categories</a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </nav>\r\n    <div class='container-fluid'>\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -74,9 +74,12 @@ var http_1 = __webpack_require__("../../../common/esm5/http.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var app_component_1 = __webpack_require__("../../../../../ClientApp/app/app.component.ts");
 var categories_component_1 = __webpack_require__("../../../../../ClientApp/app/categories/categories.component.ts");
+var links_component_1 = __webpack_require__("../../../../../ClientApp/app/links/links.component.ts");
 var dataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/dataService.ts");
 var appRoutes = [
-    { path: 'app/index', redirectTo: 'ClientApp/dist/index.html', pathMatch: 'full' }
+    { path: 'categories', component: categories_component_1.CategoriesComponent },
+    { path: 'links', component: links_component_1.LinksComponent },
+    { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -85,7 +88,8 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                categories_component_1.CategoriesComponent
+                categories_component_1.CategoriesComponent,
+                links_component_1.LinksComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),
@@ -169,6 +173,72 @@ exports.CategoriesComponent = CategoriesComponent;
 
 /***/ }),
 
+/***/ "../../../../../ClientApp/app/links/links.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class='panel panel/primary'>\r\n    <div class='panel-heading'>\r\n        {{tableHeader}}\r\n        <button type=\"button\" \r\n                class=\"btn btn-default\">Add Link</button>\r\n    </div>\r\n    <div class='panel-body'>\r\n        <div class='table-responsive'>\r\n            <table class='table'>\r\n                <thead>\r\n                    <tr>\r\n                        <th>Description</th>\r\n                        <th>Link</th>\r\n                        <th>Category</th>\r\n                        <th>Best before</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr *ngFor='let item of links'>\r\n                        <td>{{ item.description }}</td>\r\n                        <td><a href=\"{{item.link}}\" target=\"_blank\">{{ item.linkAbbreviated }}</a></td>\r\n                        <td>{{ item.categoryName }}</td>\r\n                        <td>{{ item.bestBefore }}</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../ClientApp/app/links/links.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var dataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/dataService.ts");
+var LinksComponent = /** @class */ (function () {
+    function LinksComponent(data) {
+        this.data = data;
+        this.tableHeader = 'Clipboard Links';
+        this.links = [];
+    }
+    LinksComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.loadLinks().
+            subscribe(function (result) {
+            if (result) {
+                _this.links = _this.data.links;
+            }
+            else {
+                _this.links = [{
+                        link: "https://suchen.mobile.de/fahrzeuge/search.html?damageUnrepaired=NO_DAMAGE_UNREPAIRED&isSearchRequest=true&makeModelVariant1.makeId=17200&makeModelVariant1.modelDescription=se&makeModelVariant1.modelId=134&maxFirstRegistrationDate=1980-12-31&maxPowerAsArray=PS&minPowerAsArray=PS&scopeId=C&transmissions=AUTOMATIC_GEAR",
+                        description: "Search for classing Mercedes W123 280 SE",
+                        categoryName: "Car related",
+                        bestBefore: "2018-04-30"
+                    }, {
+                        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=252201547&damageUnrepaired=NO_DAMAGE_UNREPAIRED&isSearchRequest=true&makeModelVariant1.makeId=17200&makeModelVariant1.modelDescription=se&makeModelVariant1.modelId=134&maxFirstRegistrationDate=1980-12-31&pageNumber=1&scopeId=C&transmissions=AUTOMATIC_GEAR&action=topOfPage&top=3:3&searchId=94d62f01-b49f-344c-6a46-d8126b301948",
+                        description: "Classic Red Mercedes 280SE",
+                        categoryName: "car related",
+                        bestBefore: "2018-04-30"
+                    }];
+            }
+        });
+    };
+    LinksComponent = __decorate([
+        core_1.Component({
+            selector: 'roamclip-links',
+            template: __webpack_require__("../../../../../ClientApp/app/links/links.component.html")
+        }),
+        __metadata("design:paramtypes", [dataService_1.DataService])
+    ], LinksComponent);
+    return LinksComponent;
+}());
+exports.LinksComponent = LinksComponent;
+
+
+/***/ }),
+
 /***/ "../../../../../ClientApp/app/shared/dataService.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -190,12 +260,21 @@ var DataService = /** @class */ (function () {
     function DataService(httpClient) {
         this.httpClient = httpClient;
         this.categories = [];
+        this.links = [];
     }
     DataService.prototype.loadCategories = function () {
         var _this = this;
         return this.httpClient.get("/api/categoriesinfo")
             .map(function (data) {
             _this.categories = data;
+            return true;
+        });
+    };
+    DataService.prototype.loadLinks = function () {
+        var _this = this;
+        return this.httpClient.get("/api/linksinfo")
+            .map(function (data) {
+            _this.links = data;
             return true;
         });
     };

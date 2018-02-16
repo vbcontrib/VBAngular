@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\categories\categories.component.ts" />
+    <None Remove="ClientApp\app\links\links.component.ts" />
     <None Remove="ClientApp\app\shared\dataService.ts" />
   </ItemGroup>
 
@@ -44,6 +45,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\categories\categories.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\links\links.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
   </ItemGroup>
 

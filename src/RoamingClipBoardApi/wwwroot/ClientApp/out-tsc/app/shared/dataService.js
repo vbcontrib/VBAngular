@@ -15,12 +15,21 @@ var DataService = /** @class */ (function () {
     function DataService(httpClient) {
         this.httpClient = httpClient;
         this.categories = [];
+        this.links = [];
     }
     DataService.prototype.loadCategories = function () {
         var _this = this;
         return this.httpClient.get("/api/categoriesinfo")
             .map(function (data) {
             _this.categories = data;
+            return true;
+        });
+    };
+    DataService.prototype.loadLinks = function () {
+        var _this = this;
+        return this.httpClient.get("/api/linksinfo")
+            .map(function (data) {
+            _this.links = data;
             return true;
         });
     };

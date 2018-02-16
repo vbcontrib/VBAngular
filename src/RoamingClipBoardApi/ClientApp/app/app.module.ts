@@ -6,17 +6,21 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { LinksComponent } from './links/links.component';
 import { DataService } from './shared/dataService';
 import { HttpBackend } from '@angular/common/http/src/backend';
 
 const appRoutes: Routes = [
-    { path: 'app/index', redirectTo: 'ClientApp/dist/index.html', pathMatch: 'full' }
+    { path: 'categories', component: CategoriesComponent},
+    { path: 'links', component: LinksComponent},
+    { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
       AppComponent,
-      CategoriesComponent
+      CategoriesComponent,
+      LinksComponent
   ],
     imports: [
         RouterModule.forRoot(
