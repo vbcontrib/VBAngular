@@ -13,35 +13,30 @@ var core_1 = require("@angular/core");
 var dataService_1 = require("../shared/dataService");
 var CategoriesComponent = /** @class */ (function () {
     function CategoriesComponent(data) {
-        var _this = this;
         this.data = data;
         this.tableHeader = 'Clipboard Categories';
         this.categories = [];
+    }
+    CategoriesComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.data.loadCategories().
             subscribe(function (result) {
             if (result) {
                 _this.categories = _this.data.categories;
-                _this.categories = [{
-                        idCategory: "1",
-                        categoryName: "Car related",
-                        lastUsed: "2018-02-15",
-                        linkCount: 9
-                    }];
             }
             else {
+                //TODO: Don't hand out default entries, signal error instead.
                 _this.categories = [{
-                        description: "Car related",
-                        lastUsed: "2018-02-15",
+                        categoryName: "Car related",
+                        dateLastUsed: "2018-02-15",
                         linkCount: 9
                     }, {
-                        description: "Azure",
-                        lastUsed: "2018-02-15",
+                        categoryName: "Azure",
+                        dateLastUsed: "2018-02-15",
                         linkCount: 13
                     }];
             }
         });
-    }
-    CategoriesComponent.prototype.ngOnInit = function () {
     };
     CategoriesComponent = __decorate([
         core_1.Component({

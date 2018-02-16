@@ -20,6 +20,9 @@ export class CategoriesComponent implements OnInit {
                     this.categories = this.data.categories;
                 }
                 else {
+
+                    //TODO: Don't hand out default entries, signal error instead.
+
                     this.categories = [{
                         categoryName: "Car related",
                         dateLastUsed: "2018-02-15",
