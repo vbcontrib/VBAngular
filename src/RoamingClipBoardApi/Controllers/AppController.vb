@@ -4,7 +4,7 @@ Public Class AppController
     Inherits Controller
 
     Public Function Index() As IActionResult
-        Dim v = File("Index.html", "text/html")
+        Dim v = File("ClientApp/dist/index.html", "text/html")
         Return v
     End Function
 

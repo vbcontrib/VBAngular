@@ -10,9 +10,13 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var ngx_bootstrap_1 = require("ngx-bootstrap");
 var http_1 = require("@angular/common/http");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var categories_component_1 = require("./categories/categories.component");
 var dataService_1 = require("./shared/dataService");
+var appRoutes = [
+    { path: 'app/index', redirectTo: 'ClientApp/dist/index.html', pathMatch: 'full' }
+];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -23,6 +27,7 @@ var AppModule = /** @class */ (function () {
                 categories_component_1.CategoriesComponent
             ],
             imports: [
+                router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),
                 ngx_bootstrap_1.AlertModule.forRoot(),
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule

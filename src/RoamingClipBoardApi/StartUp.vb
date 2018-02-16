@@ -1,5 +1,7 @@
-﻿Imports Microsoft.AspNetCore.Builder
+﻿Imports System.IO
+Imports Microsoft.AspNetCore.Builder
 Imports Microsoft.AspNetCore.Hosting
+Imports Microsoft.AspNetCore.Http
 Imports Microsoft.Extensions.Configuration
 Imports Microsoft.Extensions.DependencyInjection
 Imports Microsoft.Extensions.Logging
@@ -28,7 +30,15 @@ Public Class Startup
         loggerFactory.AddConsole(Configuration.GetSection("Logging"))
         loggerFactory.AddDebug()
 
-        app.
+        app.Use(Async Function(context As HttpContext, [next] As Func(Of Task)) As Task
+                    Await [next]()
+                    If context.Response.StatusCode = 404 AndAlso
+                            Not Path.HasExtension(context.Request.Path.Value) AndAlso
+                            Not context.Request.Path.Value.StartsWith("/api/") Then
+                        context.Request.Path = "/ClientApp/dist/index.html"
+                        Await [next]()
+                    End If
+                End Function).
         UseStaticFiles.
         UseMvc(Sub(cfg)
                    cfg.MapRoute("Default",
