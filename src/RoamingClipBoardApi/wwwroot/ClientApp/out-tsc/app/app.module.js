@@ -12,11 +12,15 @@ var ngx_bootstrap_1 = require("ngx-bootstrap");
 var http_1 = require("@angular/common/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
+var forms_1 = require("@angular/forms");
 var categories_component_1 = require("./categories/categories.component");
+var addCategory_component_1 = require("./categories/addCategory.component");
 var links_component_1 = require("./links/links.component");
-var dataService_1 = require("./shared/dataService");
+var categoryDataService_1 = require("./shared/categoryDataService");
+var linkDataService_1 = require("./shared/linkDataService");
 var appRoutes = [
     { path: 'categories', component: categories_component_1.CategoriesComponent },
+    { path: 'addCategory', component: addCategory_component_1.AddCategoryComponent },
     { path: 'links', component: links_component_1.LinksComponent },
     { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
@@ -28,15 +32,20 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 categories_component_1.CategoriesComponent,
+                addCategory_component_1.AddCategoryComponent,
                 links_component_1.LinksComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),
                 ngx_bootstrap_1.AlertModule.forRoot(),
                 platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
                 http_1.HttpClientModule
             ],
-            providers: [dataService_1.DataService],
+            providers: [
+                categoryDataService_1.CategoryDataService,
+                linkDataService_1.LinkDataService
+            ],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

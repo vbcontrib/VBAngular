@@ -11,11 +11,11 @@ Public Class EntriesController
 
     ' GET api/entries
     <HttpGet>
-    Public Async Function [Get]() As Task(Of IEnumerable(Of Entry))
+    Public Async Function [Get]() As Task(Of IEnumerable(Of Link))
 
         Dim oc As New RoamingClipboardContext
 
-        Dim entries = Await (From item In oc.Entries
+        Dim entries = Await (From item In oc.Links
                              Order By item.Category.CategoryName).ToListAsync.ConfigureAwait(False)
 
         Return Await Task.FromResult(entries)
@@ -23,9 +23,9 @@ Public Class EntriesController
 
     ' GET api/entries/guid
     <HttpGet("{id}")>
-    Public Async Function [Get](ByVal id As Guid) As Task(Of Entry)
-        Return Await (New RoamingClipboardContext).Entries.
-                            Where(Function(item) item.IdEntry = id).FirstOrDefaultAsync
+    Public Async Function [Get](ByVal id As Guid) As Task(Of Link)
+        Return Await (New RoamingClipboardContext).Links.
+                            Where(Function(item) item.IdLink = id).FirstOrDefaultAsync
     End Function
 
     ' GET api/entries/guid

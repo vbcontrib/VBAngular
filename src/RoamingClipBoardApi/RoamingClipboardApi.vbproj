@@ -16,9 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\categories\addCategory.component.ts" />
     <None Remove="ClientApp\app\categories\categories.component.ts" />
     <None Remove="ClientApp\app\links\links.component.ts" />
-    <None Remove="ClientApp\app\shared\dataService.ts" />
+    <None Remove="ClientApp\app\shared\categoryDataService.ts" />
+    <None Remove="ClientApp\app\shared\linkDataService.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,9 +46,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\categories\addCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\categories\categories.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\links\links.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\categoryDataService.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\linkDataService.ts" />
   </ItemGroup>
 
   <ItemGroup>

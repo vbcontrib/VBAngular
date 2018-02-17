@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var dataService_1 = require("../shared/dataService");
+var categoryDataService_1 = require("../shared/categoryDataService");
 var CategoriesComponent = /** @class */ (function () {
     function CategoriesComponent(data) {
         this.data = data;
@@ -43,7 +43,7 @@ var CategoriesComponent = /** @class */ (function () {
             selector: 'roamclip-categories',
             templateUrl: './categories.component.html'
         }),
-        __metadata("design:paramtypes", [dataService_1.DataService])
+        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService])
     ], CategoriesComponent);
     return CategoriesComponent;
 }());

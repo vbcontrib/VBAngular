@@ -1,12 +1,12 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { DataService } from '../shared/dataService';
+import { LinkDataService } from '../shared/linkDataService';
 
 @Component({
     selector: 'roamclip-links',
     templateUrl: './links.component.html'
 })
 export class LinksComponent implements OnInit {
-    constructor(private data: DataService) {
+    constructor(private data: LinkDataService) {
     }
 
     tableHeader: string = 'Clipboard Links';

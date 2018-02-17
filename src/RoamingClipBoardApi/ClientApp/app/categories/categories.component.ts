@@ -1,12 +1,12 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { DataService } from '../shared/dataService';
+import { CategoryDataService } from '../shared/categoryDataService';
 
 @Component({
     selector: 'roamclip-categories',
     templateUrl: './categories.component.html'
 })
 export class CategoriesComponent implements OnInit {
-    constructor(private data: DataService) {
+    constructor(private data: CategoryDataService) {
     }
 
     tableHeader: string = 'Clipboard Categories';

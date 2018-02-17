@@ -1,0 +1,31 @@
+﻿<div class="container">
+    <br />
+    <h2>{{pageTitle}}</h2>
+    <br />
+
+    <form class="form-horizontal" #addCategory="ngForm" (ngSubmit)="onSubmit(addCategory.value)">
+        <div class="form-group">
+            <label for="categoryName" class="control-label col-sm-2">Category</label>
+            <div class="col-sm-10">
+                <input type="Text" class="form-control" id="categoryName"
+                       placeholder="a new category name"
+                       [(ngModel)]="category.categoryName" name="categoryName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="categoryDescription" class="control-label col-sm-2">Description</label>
+            <div class="col-sm-10">
+                <input type="Text" class="form-control" id="categoryDescription"
+                       placeholder="a category description"
+                       [(ngModel)]="category.categoryDescription" name="categoryDescription"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input (click)="isAddAction=true" type="submit" class="btn btn-primary" value="Add"/>
+                <input (click)="isAddAction=false" type="submit" class="btn btn-secondary" value="Cancel"/>
+            </div>
+        </div>
+    </form>
+</div>

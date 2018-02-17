@@ -17,6 +17,24 @@ webpackEmptyAsyncContext.id = "../../../../../ClientApp/$$_lazy_route_resource l
 
 /***/ }),
 
+/***/ "../../../../../ClientApp/Models/catergory.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Category = /** @class */ (function () {
+    function Category(categoryName, categoryDescription) {
+        this.categoryName = categoryName;
+        this.categoryDescription = categoryDescription;
+    }
+    return Category;
+}());
+exports.Category = Category;
+
+
+/***/ }),
+
 /***/ "../../../../../ClientApp/app/app.component.html":
 /***/ (function(module, exports) {
 
@@ -73,11 +91,15 @@ var ngx_bootstrap_1 = __webpack_require__("../../../../ngx-bootstrap/index.js");
 var http_1 = __webpack_require__("../../../common/esm5/http.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var app_component_1 = __webpack_require__("../../../../../ClientApp/app/app.component.ts");
+var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
 var categories_component_1 = __webpack_require__("../../../../../ClientApp/app/categories/categories.component.ts");
+var addCategory_component_1 = __webpack_require__("../../../../../ClientApp/app/categories/addCategory.component.ts");
 var links_component_1 = __webpack_require__("../../../../../ClientApp/app/links/links.component.ts");
-var dataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/dataService.ts");
+var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
+var linkDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
 var appRoutes = [
     { path: 'categories', component: categories_component_1.CategoriesComponent },
+    { path: 'addCategory', component: addCategory_component_1.AddCategoryComponent },
     { path: 'links', component: links_component_1.LinksComponent },
     { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
@@ -89,15 +111,20 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 categories_component_1.CategoriesComponent,
+                addCategory_component_1.AddCategoryComponent,
                 links_component_1.LinksComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),
                 ngx_bootstrap_1.AlertModule.forRoot(),
                 platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
                 http_1.HttpClientModule
             ],
-            providers: [dataService_1.DataService],
+            providers: [
+                categoryDataService_1.CategoryDataService,
+                linkDataService_1.LinkDataService
+            ],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
@@ -108,10 +135,60 @@ exports.AppModule = AppModule;
 
 /***/ }),
 
+/***/ "../../../../../ClientApp/app/categories/addCategory.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
+var catergory_1 = __webpack_require__("../../../../../ClientApp/Models/catergory.ts");
+var AddCategoryComponent = /** @class */ (function () {
+    function AddCategoryComponent(data) {
+        this.data = data;
+        this.pageTitle = 'Add new category';
+        this.category = new catergory_1.Category("", "");
+        this.isAddAction = false;
+    }
+    AddCategoryComponent.prototype.onSubmit = function (form) {
+        console.log('you submitted value:', form);
+        console.log('isAddAction is', this.isAddAction);
+    };
+    AddCategoryComponent = __decorate([
+        core_1.Component({
+            selector: 'roamclip-addCategory',
+            template: __webpack_require__("../../../../../ClientApp/app/categories/addcategory.component.html")
+        }),
+        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService])
+    ], AddCategoryComponent);
+    return AddCategoryComponent;
+}());
+exports.AddCategoryComponent = AddCategoryComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../ClientApp/app/categories/addcategory.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\r\n    <br />\r\n    <h2>{{pageTitle}}</h2>\r\n    <br />\r\n\r\n    <form class=\"form-horizontal\" #addCategory=\"ngForm\" (ngSubmit)=\"onSubmit(addCategory.value)\">\r\n        <div class=\"form-group\">\r\n            <label for=\"categoryName\" class=\"control-label col-sm-2\">Category</label>\r\n            <div class=\"col-sm-10\">\r\n                <input type=\"Text\" class=\"form-control\" id=\"categoryName\"\r\n                       placeholder=\"a new category name\"\r\n                       [(ngModel)]=\"category.categoryName\" name=\"categoryName\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label for=\"categoryDescription\" class=\"control-label col-sm-2\">Description</label>\r\n            <div class=\"col-sm-10\">\r\n                <input type=\"Text\" class=\"form-control\" id=\"categoryDescription\"\r\n                       placeholder=\"a category description\"\r\n                       [(ngModel)]=\"category.categoryDescription\" name=\"categoryDescription\"/>\r\n            </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <div class=\"col-sm-offset-2 col-sm-10\">\r\n                <input (click)=\"isAddAction=true\" type=\"submit\" class=\"btn btn-primary\" value=\"Add\"/>\r\n                <input (click)=\"isAddAction=false\" type=\"submit\" class=\"btn btn-secondary\" value=\"Cancel\"/>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>"
+
+/***/ }),
+
 /***/ "../../../../../ClientApp/app/categories/categories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='panel panel/primary'>\r\n    <div class='panel-heading'>\r\n        {{tableHeader}}\r\n        <button type=\"button\" \r\n                class=\"btn btn-default\">Add Category</button>\r\n    </div>\r\n    <div class='panel-body'>\r\n        <div class='table-responsive'>\r\n            <table class='table'>\r\n                <thead>\r\n                    <tr>\r\n                        <th>Category</th>\r\n                        <th>Last used</th>\r\n                        <th>Link count</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr *ngFor='let item of categories'>\r\n                        <td>{{ item.categoryName }}</td>\r\n                        <td>{{ item.dateLastUsed }}</td>\r\n                        <td>{{ item.linkCount }}</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class='panel panel/primary'>\r\n    <div class='panel-heading'>\r\n        {{tableHeader}}\r\n        <button type=\"button\" [routerLink]=\"['/addCategory']\"\r\n                class=\"btn btn-default\">Add Category</button>\r\n        \r\n    </div>\r\n    <div class='panel-body'>\r\n        <div class='table-responsive'>\r\n            <table class='table'>\r\n                <thead>\r\n                    <tr>\r\n                        <th>Category</th>\r\n                        <th>Last used</th>\r\n                        <th>Link count</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr *ngFor='let item of categories'>\r\n                        <td>{{ item.categoryName }}</td>\r\n                        <td>{{ item.dateLastUsed }}</td>\r\n                        <td>{{ item.linkCount }}</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -131,7 +208,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var dataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/dataService.ts");
+var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
 var CategoriesComponent = /** @class */ (function () {
     function CategoriesComponent(data) {
         this.data = data;
@@ -164,7 +241,7 @@ var CategoriesComponent = /** @class */ (function () {
             selector: 'roamclip-categories',
             template: __webpack_require__("../../../../../ClientApp/app/categories/categories.component.html")
         }),
-        __metadata("design:paramtypes", [dataService_1.DataService])
+        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService])
     ], CategoriesComponent);
     return CategoriesComponent;
 }());
@@ -196,7 +273,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var dataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/dataService.ts");
+var linkDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
 var LinksComponent = /** @class */ (function () {
     function LinksComponent(data) {
         this.data = data;
@@ -230,7 +307,7 @@ var LinksComponent = /** @class */ (function () {
             selector: 'roamclip-links',
             template: __webpack_require__("../../../../../ClientApp/app/links/links.component.html")
         }),
-        __metadata("design:paramtypes", [dataService_1.DataService])
+        __metadata("design:paramtypes", [linkDataService_1.LinkDataService])
     ], LinksComponent);
     return LinksComponent;
 }());
@@ -239,7 +316,7 @@ exports.LinksComponent = LinksComponent;
 
 /***/ }),
 
-/***/ "../../../../../ClientApp/app/shared/dataService.ts":
+/***/ "../../../../../ClientApp/app/shared/categoryDataService.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -256,13 +333,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = __webpack_require__("../../../common/esm5/http.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var DataService = /** @class */ (function () {
-    function DataService(httpClient) {
+var CategoryDataService = /** @class */ (function () {
+    function CategoryDataService(httpClient) {
         this.httpClient = httpClient;
         this.categories = [];
-        this.links = [];
     }
-    DataService.prototype.loadCategories = function () {
+    CategoryDataService.prototype.loadCategories = function () {
         var _this = this;
         return this.httpClient.get("/api/categoriesinfo")
             .map(function (data) {
@@ -270,7 +346,40 @@ var DataService = /** @class */ (function () {
             return true;
         });
     };
-    DataService.prototype.loadLinks = function () {
+    CategoryDataService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.HttpClient])
+    ], CategoryDataService);
+    return CategoryDataService;
+}());
+exports.CategoryDataService = CategoryDataService;
+
+
+/***/ }),
+
+/***/ "../../../../../ClientApp/app/shared/linkDataService.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_1 = __webpack_require__("../../../common/esm5/http.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var LinkDataService = /** @class */ (function () {
+    function LinkDataService(httpClient) {
+        this.httpClient = httpClient;
+        this.links = [];
+    }
+    LinkDataService.prototype.loadLinks = function () {
         var _this = this;
         return this.httpClient.get("/api/linksinfo")
             .map(function (data) {
@@ -278,13 +387,13 @@ var DataService = /** @class */ (function () {
             return true;
         });
     };
-    DataService = __decorate([
+    LinkDataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.HttpClient])
-    ], DataService);
-    return DataService;
+    ], LinkDataService);
+    return LinkDataService;
 }());
-exports.DataService = DataService;
+exports.LinkDataService = LinkDataService;
 
 
 /***/ }),
