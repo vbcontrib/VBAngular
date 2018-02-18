@@ -12,23 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var categoryDataService_1 = require("../shared/categoryDataService");
 var catergory_1 = require("../../Models/catergory");
+var router_1 = require("@angular/router");
 var AddCategoryComponent = /** @class */ (function () {
-    function AddCategoryComponent(data) {
+    function AddCategoryComponent(data, router) {
         this.data = data;
+        this.router = router;
         this.pageTitle = 'Add new category';
-        this.category = new catergory_1.Category("", "");
+        this.category = new catergory_1.Category("", "", null, "", new Date(), new Date(), new Date());
         this.isAddAction = false;
     }
     AddCategoryComponent.prototype.onSubmit = function (form) {
         console.log('you submitted value:', form);
         console.log('isAddAction is', this.isAddAction);
+        this.router.navigate(['/categories']);
     };
     AddCategoryComponent = __decorate([
         core_1.Component({
             selector: 'roamclip-addCategory',
             templateUrl: './addcategory.component.html'
         }),
-        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService])
+        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService,
+            router_1.Router])
     ], AddCategoryComponent);
     return AddCategoryComponent;
 }());

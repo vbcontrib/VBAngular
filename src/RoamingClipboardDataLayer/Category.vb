@@ -9,13 +9,13 @@ Public Class Category
     <Column(TypeName:="nvarchar(200)")>
     Public Property CategoryName As String
     Public Property Links As ICollection(Of Link)
-    Public Property DateLastAssignedTo As DateTimeOffset
-    Public Property DateCreated As DateTimeOffset
-    Public Property DateLastEdited As DateTimeOffset
+    Public Property DateLastAssignedTo As Date
+    Public Property DateCreated As Date
+    Public Property DateLastEdited As Date
 
     'Just as an Idea for later: This gets updated, so we'll learn about dead categories pretty quickly.
     <NotMapped>
-    Public Property DateLastUsed As DateTimeOffset
+    Public Property DateLastUsed As Date
 
     'Maybe this also?
     <NotMapped>

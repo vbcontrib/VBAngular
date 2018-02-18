@@ -21,6 +21,7 @@
     <None Remove="ClientApp\app\links\links.component.ts" />
     <None Remove="ClientApp\app\shared\categoryDataService.ts" />
     <None Remove="ClientApp\app\shared\linkDataService.ts" />
+    <None Remove="ClientApp\Models\link.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +52,7 @@
     <TypeScriptCompile Include="ClientApp\app\links\links.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\categoryDataService.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\linkDataService.ts" />
+    <TypeScriptCompile Include="ClientApp\Models\link.ts" />
   </ItemGroup>
 
   <ItemGroup>

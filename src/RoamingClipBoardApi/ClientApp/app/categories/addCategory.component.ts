@@ -2,22 +2,27 @@
 import { CategoryDataService } from '../shared/categoryDataService';
 import { FormControl } from '@angular/forms';
 import { Category } from '../../Models/catergory';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'roamclip-addCategory',
     templateUrl: './addcategory.component.html'
 })
 export class AddCategoryComponent {
-    constructor(private data: CategoryDataService) {
+    constructor(
+        private data: CategoryDataService,
+        private router: Router) {
     }
 
     pageTitle: string = 'Add new category';
-    category: Category = new Category("", "");
+    category: Category = new Category("", "", null, "",
+        new Date(), new Date(), new Date());
     isAddAction: boolean = false;
 
     onSubmit(form: any): void {
         console.log('you submitted value:', form);
         console.log('isAddAction is', this.isAddAction);
+        this.router.navigate(['/categories'])
     }
 }
 

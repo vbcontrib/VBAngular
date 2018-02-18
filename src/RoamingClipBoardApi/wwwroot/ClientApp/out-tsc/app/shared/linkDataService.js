@@ -14,11 +14,10 @@ var core_1 = require("@angular/core");
 var LinkDataService = /** @class */ (function () {
     function LinkDataService(httpClient) {
         this.httpClient = httpClient;
-        this.links = [];
     }
     LinkDataService.prototype.loadLinks = function () {
         var _this = this;
-        return this.httpClient.get("/api/linksinfo")
+        return this.httpClient.get("/api/links")
             .map(function (data) {
             _this.links = data;
             return true;

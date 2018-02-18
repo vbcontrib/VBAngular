@@ -18,8 +18,8 @@
                 <tbody>
                     <tr *ngFor='let item of links'>
                         <td>{{ item.description }}</td>
-                        <td><a href="{{item.link}}" target="_blank">{{ item.linkAbbreviated }}</a></td>
-                        <td>{{ item.categoryName }}</td>
+                        <td><a href="{{item.urlString}}" target="_blank">{{ item.urlStringAbbreviated }}</a></td>
+                        <td>{{ item.category.categoryName }}</td>
                         <td>{{ item.bestBefore }}</td>
                     </tr>
                 </tbody>

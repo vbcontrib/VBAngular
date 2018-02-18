@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CategoryDataService } from '../shared/categoryDataService';
+import { getCalendarFormat } from 'ngx-bootstrap/chronos/moment/calendar';
 
 @Component({
     selector: 'roamclip-categories',
@@ -13,27 +14,12 @@ export class CategoriesComponent implements OnInit {
     public categories = [];
 
     ngOnInit(): void {
-        this.data.loadCategories().
-            subscribe((result) => {
+        this.getCategories().catch(() => { });
+        };
 
-                if (result) {
-                    this.categories = this.data.categories;
-                }
-                else {
-
-                    //TODO: Don't hand out default entries, signal error instead.
-
-                    this.categories = [{
-                        categoryName: "Car related",
-                        dateLastUsed: "2018-02-15",
-                        linkCount: 9
-                    }, {
-                        categoryName: "Azure",
-                        dateLastUsed: "2018-02-15",
-                        linkCount: 13
-                    }]
-                }
-            })
+    async getCategories() {
+        await this.data.loadCategories();
+        this.categories = this.data.categories;
     }
 }
 

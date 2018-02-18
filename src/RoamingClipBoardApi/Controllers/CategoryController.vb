@@ -8,15 +8,37 @@ Public Class CategoriesController
 
     ' GET api/entries
     <HttpGet>
-    Public Async Function [Get]() As Task(Of IEnumerable(Of Category))
+    Public Async Function [Get]() As Task(Of IActionResult)
 
-        Dim returnList As New List(Of Category)
-        returnList.Add(New Category With {.CategoryName = "Commodore 64",
-                                          .IdCategory = Guid.NewGuid(),
-                                          .DateCreated = Date.Now,
-                                          .DateLastEdited = Date.Now})
+        Return Await GetCategories()
 
-        Return Await Task.FromResult(returnList)
+    End Function
+
+    Public Shared Async Function GetCategories() As Task(Of IActionResult)
+        Dim returnList = {
+        New Category With {.IdCategory = Guid.NewGuid(),
+                  .CategoryName = "Commodore 64",
+                  .DateLastUsed = #2018-02-11#,
+                  .DateCreated = Date.Now,
+                  .DateLastEdited = Date.Now},
+        New Category With {.IdCategory = Guid.NewGuid(),
+                  .CategoryName = "Visual Basic",
+                  .DateLastUsed = #2018-01-16#,
+                  .DateCreated = Date.Now,
+                  .DateLastEdited = Date.Now},
+        New Category With {.IdCategory = Guid.NewGuid(),
+                  .CategoryName = ".NET",
+                  .DateLastUsed = #2017-02-16#,
+                  .DateCreated = Date.Now,
+                  .DateLastEdited = Date.Now},
+        New Category With {.IdCategory = Guid.NewGuid(),
+                  .CategoryName = "C#",
+                  .DateLastUsed = #2017-12-24#,
+                  .DateCreated = Date.Now,
+                  .DateLastEdited = Date.Now}
+        }.ToList
+
+        Return Await Task.FromResult(New OkObjectResult(returnList))
 
     End Function
 
