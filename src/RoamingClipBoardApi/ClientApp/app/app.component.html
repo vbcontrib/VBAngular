@@ -20,6 +20,9 @@
                 </li>
             </ul>
         </div>
+        <button (click)="onCreateDemoDataClick()" 
+                class="{{isButtonEnabled}}" 
+                type="button">{{buttonContent}}</button>
     </nav>
     <div class='container-fluid'>
         <router-outlet></router-outlet>

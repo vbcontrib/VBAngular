@@ -7,7 +7,6 @@ import { Link } from '../../Models/link';
 export class LinkDataService {
 
     constructor(private httpClient: HttpClient) {
-
     }
 
     public links:Link[];

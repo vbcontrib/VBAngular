@@ -121,6 +121,32 @@ var CategoryDataService = /** @class */ (function () {
             });
         });
     };
+    //TODO: This has to go in a dedicated DataService.
+    CategoryDataService.prototype.createDemoData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var result, e_3, err;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        console.log("BEFORE creating demo data.");
+                        return [4 /*yield*/, this.httpClient.get("/api/sampledata").toPromise()];
+                    case 1:
+                        result = _a.sent();
+                        console.log("No error requesting to generate demodata.", result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        e_3 = _a.sent();
+                        if (e_3 instanceof http_1.HttpErrorResponse) {
+                            err = e_3;
+                            console.log("Error requesting to generate demodata.", err.message);
+                        }
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     CategoryDataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.HttpClient])

@@ -11,11 +11,17 @@ Public Class CategoriesController
     <HttpGet>
     Public Async Function [Get]() As Task(Of IActionResult)
 
-        Return Await GetCategories().ConfigureAwait(False)
+        Dim context As New RoamingClipboardContext
+        Dim resultList = Await (From categoryItem In context.Categories
+                                Order By categoryItem.DateLastAssignedTo Descending).
+                                    ToListAsync.
+                                    ConfigureAwait(False)
+
+        Return New OkObjectResult(resultList)
 
     End Function
 
-    ' GET api/categories
+    ' POST api/categories
     <HttpPost>
     Public Async Function Post(<FromBody> category As Category) As Task(Of IActionResult)
 
@@ -29,9 +35,11 @@ Public Class CategoriesController
 
         Try
             Dim oc As New RoamingClipboardContext
+            category.DateCreated = Date.Now
+            category.DateLastEdited = Date.Now
+            category.DateLastAssignedTo = Date.Now
             oc.Categories.Add(category)
-            'later:
-            'Await oc.SaveChangesAsync.ConfigureAwait(False)
+            Await oc.SaveChangesAsync.ConfigureAwait(False)
 
             Return New JsonResult(category.IDCategoryAsString) With {.StatusCode = 200}
         Catch ex As Exception
@@ -39,36 +47,5 @@ Public Class CategoriesController
         Return Await Task.FromResult(New BadRequestResult)
 
     End Function
-
-    Public Shared Async Function GetCategories() As Task(Of IActionResult)
-        Dim returnList = {
-        New Category With {.IDCategory = Guid.NewGuid(),
-                  .CategoryName = "Commodore 64",
-                  .DateLastUsed = #2018-02-11#,
-                  .DateCreated = Date.Now,
-                  .DateLastEdited = Date.Now},
-        New Category With {.IDCategory = Guid.NewGuid(),
-                  .CategoryName = "Visual Basic",
-                  .DateLastUsed = #2018-01-16#,
-                  .DateCreated = Date.Now,
-                  .DateLastEdited = Date.Now},
-        New Category With {.IDCategory = Guid.NewGuid(),
-                  .CategoryName = ".NET",
-                  .DateLastUsed = #2017-02-16#,
-                  .DateCreated = Date.Now,
-                  .DateLastEdited = Date.Now},
-        New Category With {.IDCategory = Guid.NewGuid(),
-                  .CategoryName = "C#",
-                  .DateLastUsed = #2017-12-24#,
-                  .DateCreated = Date.Now,
-                  .DateLastEdited = Date.Now}
-        }.ToList
-
-        Return Await Task.FromResult(New OkObjectResult(returnList))
-
-    End Function
-
-
-
 
 End Class

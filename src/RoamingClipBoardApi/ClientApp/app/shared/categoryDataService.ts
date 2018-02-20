@@ -67,5 +67,21 @@ export class CategoryDataService {
                 console.log("Error putting category: ", err.message);
             }
         }
-     }
+    }
+
+    //TODO: This has to go in a dedicated DataService.
+    async createDemoData(): Promise<string> {
+        try {
+            console.log("BEFORE creating demo data.");
+            var result = await this.httpClient.get<string>("/api/sampledata").toPromise();
+            console.log("No error requesting to generate demodata.", result)
+            return result;
+        } catch (e) {
+            if (e instanceof HttpErrorResponse) {
+                var err: Error = e;
+                console.log("Error requesting to generate demodata.", err.message);
+            }
+        }
+    }
+
 }

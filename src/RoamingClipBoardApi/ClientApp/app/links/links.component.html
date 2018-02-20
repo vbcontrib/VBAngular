@@ -20,7 +20,7 @@
                         <td>{{ item.description }}</td>
                         <td><a href="{{item.urlString}}" target="_blank">{{ item.urlStringAbbreviated }}</a></td>
                         <td>{{ item.category.categoryName }}</td>
-                        <td>{{ item.bestBefore }}</td>
+                        <td>{{ item.bestBefore | date: 'yyyy-MM-dd' }}</td>
                     </tr>
                 </tbody>
             </table>

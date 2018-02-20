@@ -11,15 +11,15 @@
                 <thead>
                     <tr>
                         <th>Category</th>
-                        <th>Last used</th>
-                        <th>Link count</th>
+                        <th>Description</th>
+                        <th>Last assigned to</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor='let item of categories'>
                         <td>{{ item.categoryName }}</td>
-                        <td>{{ item.dateLastUsed }}</td>
-                        <td>{{ item.linkCount }}</td>
+                        <td>{{ item.categoryDescription }}</td>
+                        <td>{{ item.dateLastAssignedTo | date: 'yyyy-MM-dd (EEE)' }}</td>
                     </tr>
                 </tbody>
             </table>
