@@ -15,13 +15,18 @@ export class AddCategoryComponent {
     }
 
     pageTitle: string = 'Add new category';
-    category: Category = new Category("", "", null, "",
+    category: Category = new Category("",
+        "Test-Category", "Test description", null,
         new Date(), new Date(), new Date());
     isAddAction: boolean = false;
 
-    onSubmit(form: any): void {
+    async onSubmit(form: any) {
         console.log('you submitted value:', form);
         console.log('isAddAction is', this.isAddAction);
+        console.log('category: Name', this.category.categoryName);
+        console.log('category: Description', this.category.categoryDescription);
+        var t = await this.data.postCategory(this.category);
+        console.log('putCategory', t);
         this.router.navigate(['/categories'])
     }
 }

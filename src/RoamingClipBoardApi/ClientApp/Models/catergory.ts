@@ -4,8 +4,8 @@ export class Category {
     constructor(
         public idCategory: string,
         public categoryName: string,
-        public links: Link[],
         public categoryDescription: string,
+        public links: Link[],
         public dateLastAssignedTo: Date,
         public dateCreated: Date,
         public dateLastEdited: Date

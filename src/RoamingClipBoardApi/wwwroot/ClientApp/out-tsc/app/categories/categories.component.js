@@ -58,12 +58,14 @@ var CategoriesComponent = /** @class */ (function () {
     ;
     CategoriesComponent.prototype.getCategories = function () {
         return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.data.loadCategories()];
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.data.loadCategories()];
                     case 1:
-                        _a.sent();
-                        this.categories = this.data.categories;
+                        _a.categories = _b.sent();
                         return [2 /*return*/];
                 }
             });

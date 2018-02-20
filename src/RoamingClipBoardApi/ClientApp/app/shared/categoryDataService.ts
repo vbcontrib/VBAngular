@@ -1,7 +1,14 @@
 ﻿import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category } from '../../Models/catergory';
+import { Observable } from 'rxjs/Observable';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+};
 
 @Injectable()
 export class CategoryDataService {
@@ -9,26 +16,56 @@ export class CategoryDataService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public categories: Category[];
-    private headers: HttpHeaders;
+    public headers: HttpHeaders;
 
-    async loadCategories() {
-        return await this.httpClient.get("/api/categories")
-            .subscribe((data: any[]) => {
-                this.categories = data;
-            },
-            (err: HttpErrorResponse) => {
-                if (err.error instanceof Error) {
-                    console.log("Client-side error occured.");
-                } else {
-                    console.log("Server-side error occured.");
-                }
-            });
-    } 
+    private handleError(error: HttpErrorResponse) {
 
-    //putCategory(category: Category) {
-    //    this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    //    this.httpClient.put("/api/category", category, this.headers).subscribe();
-    // }
+        return new ErrorObservable("");
+    }
 
+    //loadCategoriesClassic() {
+    //    var ret = this.httpClient.get<Category[]>("/api/categories")
+    //        .pipe(
+    //        catchError(this.handleError)
+    //        );
+
+
+            //    if (err.error instanceof Error) {
+            //        console.log("Client-side error occured.");
+            //    } else {
+            //        console.log("Server-side error occured.");
+            //    }
+            //});
+    //} 
+
+    async loadCategories(): Promise<Category[]> {
+        try {
+            console.log("BEFORE getting categories.");
+            var t = await this.httpClient.get<Category[]>("/api/categories").toPromise()
+            console.log("No error occured getting categories.");
+            return t;
+
+        } catch (e) {
+            if (e instanceof HttpErrorResponse) {
+                var err: Error = e;
+                console.log("Error getting categories: ", err.message);
+            }
+            return null;
+        }
+    }
+
+    async postCategory(category: Category): Promise<string> {
+        try {
+            console.log("BEFORE putting category:", category.categoryName);
+            var newGuid = await this.httpClient.post<string>("/api/categories",
+                category, httpOptions).toPromise();
+            console.log("No error occured putting category. GUID ID is:", newGuid)
+            return newGuid;
+        } catch (e) {
+            if (e instanceof HttpErrorResponse) {
+                var err: Error = e;
+                console.log("Error putting category: ", err.message);
+            }
+        }
+     }
 }

@@ -7,7 +7,7 @@
     <ProjectGuid>{F8A042FF-BDAE-404D-8035-BC6A51A55B62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RoamingClipboardDataLayer.Migration</RootNamespace>
+    <RootNamespace>RoamingClipboardDataLayerMig</RootNamespace>
     <AssemblyName>RoamingClipboardDataLayer.Migration</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -123,9 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignerDbContext.cs" />
-    <Compile Include="Migrations\20180217103414_InitialSchemaDefinition.cs" />
-    <Compile Include="Migrations\20180217103414_InitialSchemaDefinition.designer.cs">
-      <DependentUpon>20180217103414_InitialSchemaDefinition.cs</DependentUpon>
+    <Compile Include="Migrations\20180220120114_InitialDatabaseSchema.cs" />
+    <Compile Include="Migrations\20180220120114_InitialDatabaseSchema.designer.cs">
+      <DependentUpon>20180220120114_InitialDatabaseSchema.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DesignerDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

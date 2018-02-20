@@ -18,8 +18,7 @@ export class CategoriesComponent implements OnInit {
         };
 
     async getCategories() {
-        await this.data.loadCategories();
-        this.categories = this.data.categories;
+        this.categories = await this.data.loadCategories();
     }
 }
 

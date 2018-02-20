@@ -46,27 +46,77 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = require("@angular/common/http");
 var core_1 = require("@angular/core");
+var ErrorObservable_1 = require("rxjs/observable/ErrorObservable");
+var httpOptions = {
+    headers: new http_1.HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+};
 var CategoryDataService = /** @class */ (function () {
     function CategoryDataService(httpClient) {
         this.httpClient = httpClient;
     }
+    CategoryDataService.prototype.handleError = function (error) {
+        return new ErrorObservable_1.ErrorObservable("");
+    };
+    //loadCategoriesClassic() {
+    //    var ret = this.httpClient.get<Category[]>("/api/categories")
+    //        .pipe(
+    //        catchError(this.handleError)
+    //        );
+    //    if (err.error instanceof Error) {
+    //        console.log("Client-side error occured.");
+    //    } else {
+    //        console.log("Server-side error occured.");
+    //    }
+    //});
+    //} 
     CategoryDataService.prototype.loadCategories = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
+            var t, e_1, err;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.httpClient.get("/api/categories")
-                            .subscribe(function (data) {
-                            _this.categories = data;
-                        }, function (err) {
-                            if (err.error instanceof Error) {
-                                console.log("Client-side error occured.");
-                            }
-                            else {
-                                console.log("Server-side error occured.");
-                            }
-                        })];
-                    case 1: return [2 /*return*/, _a.sent()];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        console.log("BEFORE getting categories.");
+                        return [4 /*yield*/, this.httpClient.get("/api/categories").toPromise()];
+                    case 1:
+                        t = _a.sent();
+                        console.log("No error occured getting categories.");
+                        return [2 /*return*/, t];
+                    case 2:
+                        e_1 = _a.sent();
+                        if (e_1 instanceof http_1.HttpErrorResponse) {
+                            err = e_1;
+                            console.log("Error getting categories: ", err.message);
+                        }
+                        return [2 /*return*/, null];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    CategoryDataService.prototype.postCategory = function (category) {
+        return __awaiter(this, void 0, void 0, function () {
+            var newGuid, e_2, err;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        console.log("BEFORE putting category:", category.categoryName);
+                        return [4 /*yield*/, this.httpClient.post("/api/categories", category, httpOptions).toPromise()];
+                    case 1:
+                        newGuid = _a.sent();
+                        console.log("No error occured putting category. GUID ID is:", newGuid);
+                        return [2 /*return*/, newGuid];
+                    case 2:
+                        e_2 = _a.sent();
+                        if (e_2 instanceof http_1.HttpErrorResponse) {
+                            err = e_2;
+                            console.log("Error putting category: ", err.message);
+                        }
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });

@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using RoamingClipboardDataLayer.Migration;
+using RoamingClipboardDataLayerMig;
 using System;
 
-namespace RoamingClipboardDataLayer.Migration.Migrations
+namespace RoamingClipboardDataLayerMig.Migrations
 {
     [DbContext(typeof(DesignerDbContext))]
     partial class DesignerDbContextModelSnapshot : ModelSnapshot
@@ -22,44 +22,47 @@ namespace RoamingClipboardDataLayer.Migration.Migrations
 
             modelBuilder.Entity("RoamingClipboardDataLayer.Category", b =>
                 {
-                    b.Property<Guid>("IdCategory")
+                    b.Property<Guid>("IDCategory")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("CategoryDescription");
+
                     b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTimeOffset>("DateCreated");
+                    b.Property<DateTime>("DateCreated");
 
-                    b.Property<DateTimeOffset>("DateLastAssignedTo");
+                    b.Property<DateTime?>("DateLastAssignedTo");
 
-                    b.Property<DateTimeOffset>("DateLastEdited");
+                    b.Property<DateTime>("DateLastEdited");
 
-                    b.HasKey("IdCategory");
+                    b.HasKey("IDCategory");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("RoamingClipboardDataLayer.Link", b =>
                 {
-                    b.Property<Guid>("IdLink")
+                    b.Property<Guid>("IDLink")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<TimeSpan?>("BestBefore");
+                    b.Property<DateTime?>("BestBefore");
 
-                    b.Property<Guid?>("CategoryIdCategory");
+                    b.Property<Guid?>("CategoryIDCategory");
 
-                    b.Property<DateTimeOffset>("DateCreated");
+                    b.Property<DateTime>("DateCreated");
 
-                    b.Property<DateTimeOffset>("DateLastEdited");
+                    b.Property<DateTime>("DateLastEdited");
 
                     b.Property<string>("Description");
 
                     b.Property<string>("UrlString")
                         .HasColumnType("nvarchar(2048)");
 
-                    b.HasKey("IdLink");
+                    b.HasKey("IDLink");
 
-                    b.HasIndex("CategoryIdCategory");
+                    b.HasIndex("CategoryIDCategory");
 
                     b.ToTable("Links");
                 });
@@ -68,7 +71,7 @@ namespace RoamingClipboardDataLayer.Migration.Migrations
                 {
                     b.HasOne("RoamingClipboardDataLayer.Category", "Category")
                         .WithMany("Links")
-                        .HasForeignKey("CategoryIdCategory");
+                        .HasForeignKey("CategoryIDCategory");
                 });
 #pragma warning restore 612, 618
         }

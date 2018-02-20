@@ -5,6 +5,7 @@ Imports Microsoft.AspNetCore.Http
 Imports Microsoft.Extensions.Configuration
 Imports Microsoft.Extensions.DependencyInjection
 Imports Microsoft.Extensions.Logging
+Imports Newtonsoft.Json.Serialization
 
 Public Class Startup
     Public Sub New(ByVal env As IHostingEnvironment)
@@ -19,7 +20,11 @@ Public Class Startup
     ' This method gets called by the runtime. Use this method to add services to the container.
     Public Sub ConfigureServices(ByVal services As IServiceCollection)
         ' Add framework services.
-        services.AddMvc()
+        services.
+            AddMvc().AddJsonOptions(
+            Sub(v)
+                v.SerializerSettings.ContractResolver = New CamelCasePropertyNamesContractResolver
+            End Sub)
     End Sub
 
     ' This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
