@@ -11,17 +11,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = require("@angular/common/http");
 var core_1 = require("@angular/core");
+var ErrorObservable_1 = require("rxjs/observable/ErrorObservable");
+var operators_1 = require("rxjs/operators");
 var LinkDataService = /** @class */ (function () {
     function LinkDataService(httpClient) {
         this.httpClient = httpClient;
     }
     LinkDataService.prototype.loadLinks = function () {
-        var _this = this;
         return this.httpClient.get("/api/links")
-            .map(function (data) {
-            _this.links = data;
-            return true;
-        });
+            .pipe(operators_1.catchError(this.handleError));
+    };
+    LinkDataService.prototype.handleError = function (err) {
+        console.log(err);
+        // in a real world app, we may send the server to some remote logging infrastructure
+        // instead of just logging it to the console
+        var errorMessage;
+        if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            errorMessage = "An error occurred: " + err.error.message;
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
+        }
+        console.error(errorMessage);
+        return new ErrorObservable_1.ErrorObservable(errorMessage);
     };
     LinkDataService = __decorate([
         core_1.Injectable(),

@@ -18,10 +18,12 @@ var addCategory_component_1 = require("./categories/addCategory.component");
 var links_component_1 = require("./links/links.component");
 var categoryDataService_1 = require("./shared/categoryDataService");
 var linkDataService_1 = require("./shared/linkDataService");
+var addLink_component_1 = require("./links/addLink.component");
 var appRoutes = [
     { path: 'categories', component: categories_component_1.CategoriesComponent },
     { path: 'addCategory', component: addCategory_component_1.AddCategoryComponent },
     { path: 'links', component: links_component_1.LinksComponent },
+    { path: 'addLink', component: addLink_component_1.AddLinkComponent },
     { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
@@ -33,7 +35,8 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent,
                 categories_component_1.CategoriesComponent,
                 addCategory_component_1.AddCategoryComponent,
-                links_component_1.LinksComponent
+                links_component_1.LinksComponent,
+                addLink_component_1.AddLinkComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),

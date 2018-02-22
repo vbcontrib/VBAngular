@@ -12,11 +12,13 @@ import { AddCategoryComponent } from './categories/addCategory.component';
 import { LinksComponent } from './links/links.component';
 import { CategoryDataService } from './shared/categoryDataService';
 import { LinkDataService } from './shared/linkDataService';
+import { AddLinkComponent } from './links/addLink.component';
 
 const appRoutes: Routes = [
     { path: 'categories', component: CategoriesComponent},
     { path: 'addCategory', component: AddCategoryComponent },
     { path: 'links', component: LinksComponent},
+    { path: 'addLink', component: AddLinkComponent },
     { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
 
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
         AppComponent,
         CategoriesComponent,
         AddCategoryComponent,
-        LinksComponent
+        LinksComponent,
+        AddLinkComponent
     ],
     imports: [
         RouterModule.forRoot(

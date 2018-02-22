@@ -18,14 +18,20 @@
             <div class="col-sm-10">
                 <input type="Text" class="form-control" id="categoryDescription"
                        placeholder="a category description"
-                       [(ngModel)]="category.categoryDescription" name="categoryDescription"/>
+                       [(ngModel)]="category.categoryDescription" name="categoryDescription" />
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input (click)="isAddAction=true" type="submit" class="btn btn-primary" value="Add"/>
-                <input (click)="isAddAction=false" type="submit" class="btn btn-secondary" value="Cancel"/>
+                <button type="submit"
+                        class="btn btn-primary">
+                    Add
+                </button>
+                <button class="btn btn-secondary"
+                        [routerLink]="['/categories']">
+                    Cancel
+                </button>
             </div>
         </div>
     </form>

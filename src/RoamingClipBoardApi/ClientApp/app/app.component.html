@@ -18,11 +18,12 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="'/categories'">Categories</a>
                 </li>
+                <li class="nav-item">
+                    <a class="{{isButtonEnabled}}" 
+                       (click)="onCreateDemoDataClick()">{{buttonContent}}</a>
+                </li>
             </ul>
         </div>
-        <button (click)="onCreateDemoDataClick()" 
-                class="{{isButtonEnabled}}" 
-                type="button">{{buttonContent}}</button>
     </nav>
     <div class='container-fluid'>
         <router-outlet></router-outlet>

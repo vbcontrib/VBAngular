@@ -1,0 +1,53 @@
+﻿<div class="container">
+    <br />
+    <h2>{{pageTitle}}</h2>
+    <br />
+
+    <form class="form-horizontal" #addCategory="ngForm" (ngSubmit)="onSubmit(addCategory.value)">
+        <div class="form-group">
+            <label for="urlString" class="control-label col-sm-2">Link (Url)</label>
+            <div class="col-sm-10">
+                <input type="Text" class="form-control" id="urlString"
+                       placeholder="paste in a link (url)"
+                       [(ngModel)]="link.urlString" name="urlString">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="categories" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item">Action</a>
+                    <a class="dropdown-item">Another action</a>
+                    <a class="dropdown-item">Something else here</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="control-label col-sm-2">Description</label>
+            <div class="col-sm-10">
+                <input type="Text" class="form-control" id="description"
+                       placeholder="a category description"
+                       [(ngModel)]="link.description" name="description" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit"
+                        class="btn btn-primary">
+                    Add
+                </button>
+                <button class="btn btn-secondary"
+                        [routerLink]="['/links']">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

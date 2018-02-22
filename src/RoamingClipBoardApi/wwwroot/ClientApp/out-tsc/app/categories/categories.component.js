@@ -49,11 +49,16 @@ var categoryDataService_1 = require("../shared/categoryDataService");
 var CategoriesComponent = /** @class */ (function () {
     function CategoriesComponent(data) {
         this.data = data;
+        // Normally the properties are first, before the constructor
+        // No need for "public". Properties are public by default.
         this.tableHeader = 'Clipboard Categories';
         this.categories = [];
     }
+    // I added the code for the Observable. You can comment this out to use the async technique instead.
     CategoriesComponent.prototype.ngOnInit = function () {
-        this.getCategories().catch(function () { });
+        var _this = this;
+        // this.getCategories().catch(() => { });
+        this.data.loadCategories().subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; });
     };
     ;
     CategoriesComponent.prototype.getCategories = function () {
@@ -63,7 +68,7 @@ var CategoriesComponent = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, this.data.loadCategories()];
+                        return [4 /*yield*/, this.data.loadCategoriesAsync()];
                     case 1:
                         _a.categories = _b.sent();
                         return [2 /*return*/];

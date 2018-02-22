@@ -47,6 +47,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = require("@angular/common/http");
 var core_1 = require("@angular/core");
 var ErrorObservable_1 = require("rxjs/observable/ErrorObservable");
+var operators_1 = require("rxjs/operators");
 var httpOptions = {
     headers: new http_1.HttpHeaders({
         'Content-Type': 'application/json'
@@ -56,22 +57,11 @@ var CategoryDataService = /** @class */ (function () {
     function CategoryDataService(httpClient) {
         this.httpClient = httpClient;
     }
-    CategoryDataService.prototype.handleError = function (error) {
-        return new ErrorObservable_1.ErrorObservable("");
-    };
-    //loadCategoriesClassic() {
-    //    var ret = this.httpClient.get<Category[]>("/api/categories")
-    //        .pipe(
-    //        catchError(this.handleError)
-    //        );
-    //    if (err.error instanceof Error) {
-    //        console.log("Client-side error occured.");
-    //    } else {
-    //        console.log("Server-side error occured.");
-    //    }
-    //});
-    //} 
     CategoryDataService.prototype.loadCategories = function () {
+        return this.httpClient.get("/api/categories")
+            .pipe(operators_1.tap(function (c) { return console.log(JSON.stringify(c)); }), operators_1.catchError(this.handleError));
+    };
+    CategoryDataService.prototype.loadCategoriesAsync = function () {
         return __awaiter(this, void 0, void 0, function () {
             var t, e_1, err;
             return __generator(this, function (_a) {
@@ -121,6 +111,12 @@ var CategoryDataService = /** @class */ (function () {
             });
         });
     };
+    // Added an example save using Observables.
+    CategoryDataService.prototype.saveCategory = function (category) {
+        var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.httpClient.post('/api/categories', category, { headers: headers })
+            .pipe(operators_1.tap(function (data) { return console.log('createCategory: ' + JSON.stringify(data)); }), operators_1.catchError(this.handleError));
+    };
     //TODO: This has to go in a dedicated DataService.
     CategoryDataService.prototype.createDemoData = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -146,6 +142,23 @@ var CategoryDataService = /** @class */ (function () {
                 }
             });
         });
+    };
+    CategoryDataService.prototype.handleError = function (err) {
+        console.log(err);
+        // in a real world app, we may send the server to some remote logging infrastructure
+        // instead of just logging it to the console
+        var errorMessage;
+        if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            errorMessage = "An error occurred: " + err.error.message;
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
+        }
+        console.error(errorMessage);
+        return new ErrorObservable_1.ErrorObservable(errorMessage);
     };
     CategoryDataService = __decorate([
         core_1.Injectable(),

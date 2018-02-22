@@ -53,7 +53,11 @@ var AddCategoryComponent = /** @class */ (function () {
         this.data = data;
         this.router = router;
         this.pageTitle = 'Add new category';
+        // If you don't want to have to specify all of the properties as part of the constructor
+        // you can make them optional in the model using "?"
         this.category = new catergory_1.Category("", "Test-Category", "Test description", null, new Date(), new Date(), new Date());
+        // I don't normally see a Cancel button defined with type=submit.
+        // Rather, the cancel is set to type=button and it uses a routerLink to navigate back.
         this.isAddAction = false;
     }
     AddCategoryComponent.prototype.onSubmit = function (form) {
@@ -75,6 +79,11 @@ var AddCategoryComponent = /** @class */ (function () {
                 }
             });
         });
+    };
+    // Performing the save using Observables
+    AddCategoryComponent.prototype.saveCategory = function () {
+        var _this = this;
+        this.data.saveCategory(this.category).subscribe(function () { return _this.router.navigate(['/categories']); });
     };
     AddCategoryComponent = __decorate([
         core_1.Component({
