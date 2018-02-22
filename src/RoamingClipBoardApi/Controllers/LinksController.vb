@@ -46,6 +46,12 @@ Public Class LinksController
 
         Try
             Dim oc As New RoamingClipboardContext
+            'We need to connect the category, so it will not be 
+            'counted as New And attemped to be saved!
+            oc.ChangeTracker.TrackGraph(link.Category,
+                                        Sub(graphNode)
+                                            graphNode.Entry.State = EntityState.Unchanged
+                                        End Sub)
             link.DateCreated = Date.Now
             link.DateLastEdited = Date.Now
             oc.Links.Add(link)
