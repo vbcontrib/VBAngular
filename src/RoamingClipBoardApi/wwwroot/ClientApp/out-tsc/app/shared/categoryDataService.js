@@ -57,10 +57,30 @@ var CategoryDataService = /** @class */ (function () {
     function CategoryDataService(httpClient) {
         this.httpClient = httpClient;
     }
+    // typical Angular way to get data from a WebApi
     CategoryDataService.prototype.loadCategories = function () {
         return this.httpClient.get("/api/categories")
             .pipe(operators_1.tap(function (c) { return console.log(JSON.stringify(c)); }), operators_1.catchError(this.handleError));
     };
+    // error handler for catchError (see above)
+    CategoryDataService.prototype.handleError = function (err) {
+        console.log(err);
+        // in a real world app, we may send the server to some remote logging infrastructure
+        // instead of just logging it to the console
+        var errorMessage;
+        if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            errorMessage = "An error occurred: " + err.error.message;
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
+        }
+        console.error(errorMessage);
+        return new ErrorObservable_1.ErrorObservable(errorMessage);
+    };
+    // the more .NET style async way - but equally OK!
     CategoryDataService.prototype.loadCategoriesAsync = function () {
         return __awaiter(this, void 0, void 0, function () {
             var t, e_1, err;
@@ -86,6 +106,7 @@ var CategoryDataService = /** @class */ (function () {
             });
         });
     };
+    // adding a new category:
     CategoryDataService.prototype.postCategory = function (category) {
         return __awaiter(this, void 0, void 0, function () {
             var newGuid, e_2, err;
@@ -142,23 +163,6 @@ var CategoryDataService = /** @class */ (function () {
                 }
             });
         });
-    };
-    CategoryDataService.prototype.handleError = function (err) {
-        console.log(err);
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        var errorMessage;
-        if (err.error instanceof Error) {
-            // A client-side or network error occurred. Handle it accordingly.
-            errorMessage = "An error occurred: " + err.error.message;
-        }
-        else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
-        }
-        console.error(errorMessage);
-        return new ErrorObservable_1.ErrorObservable(errorMessage);
     };
     CategoryDataService = __decorate([
         core_1.Injectable(),

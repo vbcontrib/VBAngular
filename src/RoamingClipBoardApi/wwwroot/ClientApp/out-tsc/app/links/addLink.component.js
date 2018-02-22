@@ -48,9 +48,11 @@ var core_1 = require("@angular/core");
 var linkDataService_1 = require("../shared/linkDataService");
 var router_1 = require("@angular/router");
 var link_1 = require("../../Models/link");
+var categoryDataService_1 = require("../shared/categoryDataService");
 var AddLinkComponent = /** @class */ (function () {
-    function AddLinkComponent(data, router) {
-        this.data = data;
+    function AddLinkComponent(linkDs, categoryDs, router) {
+        this.linkDs = linkDs;
+        this.categoryDs = categoryDs;
         this.router = router;
         this.pageTitle = 'Add new link';
         // If you don't want to have to specify all of the properties as part of the constructor
@@ -62,15 +64,38 @@ var AddLinkComponent = /** @class */ (function () {
     }
     AddLinkComponent.prototype.onSubmit = function (form) {
         return __awaiter(this, void 0, void 0, function () {
+            var t;
             return __generator(this, function (_a) {
-                console.log('you submitted value:', form);
-                console.log('isAddAction is', this.isAddAction);
-                console.log('link: Url', this.link.urlString);
-                console.log('link: Description', this.link.description);
-                // var t = await this.data.postCategory(this.category);
-                //console.log('putCategory', t);
-                this.router.navigate(['/categories']);
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        console.log('you submitted value:', form);
+                        console.log('isAddAction is', this.isAddAction);
+                        console.log('link: Url', this.link.urlString);
+                        console.log('link: Description', this.link.description);
+                        this.link.category = this.selectedCategory;
+                        return [4 /*yield*/, this.linkDs.postLink(this.link)];
+                    case 1:
+                        t = _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AddLinkComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.categoryDs.loadCategoriesAsync()];
+                    case 1:
+                        _a.categories = _b.sent();
+                        if (this.categories.length > 0) {
+                            this.selectedCategory = this.categories[0];
+                        }
+                        return [2 /*return*/];
+                }
             });
         });
     };
@@ -86,6 +111,7 @@ var AddLinkComponent = /** @class */ (function () {
             templateUrl: './addLink.component.html'
         }),
         __metadata("design:paramtypes", [linkDataService_1.LinkDataService,
+            categoryDataService_1.CategoryDataService,
             router_1.Router])
     ], AddLinkComponent);
     return AddLinkComponent;

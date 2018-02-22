@@ -9,25 +9,27 @@ import { Category } from '../../Models/catergory';  // <-- Note that this folder
     templateUrl: './categories.component.html'
 })
 export class CategoriesComponent implements OnInit {
-    // Normally the properties are first, before the constructor
-    // No need for "public". Properties are public by default.
+
+    // HINT: It's usual that properties come first, before the constructor.
+    // And no need for "public": Properties are public by default.
+
     tableHeader: string = 'Clipboard Categories';
     categories: Category[] = [];
     errorMessage: string;
 
-    constructor(private data: CategoryDataService) { }
+    constructor(private categoryDs: CategoryDataService) { }
 
     // I added the code for the Observable. You can comment this out to use the async technique instead.
     ngOnInit(): void {
         // this.getCategories().catch(() => { });
-        this.data.loadCategories().subscribe(
+        this.categoryDs.loadCategories().subscribe(
             (categories: Category[]) => this.categories = categories,
             (error: any) => this.errorMessage = <any>error
         );
     };
 
     async getCategories() {
-        this.categories = await this.data.loadCategoriesAsync();
+        this.categories = await this.categoryDs.loadCategoriesAsync();
     }
 }
 

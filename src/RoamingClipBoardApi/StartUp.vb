@@ -24,6 +24,7 @@ Public Class Startup
             AddMvc().AddJsonOptions(
             Sub(v)
                 v.SerializerSettings.ContractResolver = New CamelCasePropertyNamesContractResolver
+                v.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             End Sub)
     End Sub
 

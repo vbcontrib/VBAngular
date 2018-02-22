@@ -404,10 +404,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
 var CategoriesComponent = /** @class */ (function () {
-    function CategoriesComponent(data) {
-        this.data = data;
-        // Normally the properties are first, before the constructor
-        // No need for "public". Properties are public by default.
+    function CategoriesComponent(categoryDs) {
+        this.categoryDs = categoryDs;
+        // HINT: It's usual that properties come first, before the constructor.
+        // And no need for "public": Properties are public by default.
         this.tableHeader = 'Clipboard Categories';
         this.categories = [];
     }
@@ -415,7 +415,7 @@ var CategoriesComponent = /** @class */ (function () {
     CategoriesComponent.prototype.ngOnInit = function () {
         var _this = this;
         // this.getCategories().catch(() => { });
-        this.data.loadCategories().subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; });
+        this.categoryDs.loadCategories().subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; });
     };
     ;
     CategoriesComponent.prototype.getCategories = function () {
@@ -425,7 +425,7 @@ var CategoriesComponent = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, this.data.loadCategoriesAsync()];
+                        return [4 /*yield*/, this.categoryDs.loadCategoriesAsync()];
                     case 1:
                         _a.categories = _b.sent();
                         return [2 /*return*/];
@@ -450,7 +450,7 @@ exports.CategoriesComponent = CategoriesComponent;
 /***/ "../../../../../ClientApp/app/links/addLink.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <br />\r\n    <h2>{{pageTitle}}</h2>\r\n    <br />\r\n\r\n    <form class=\"form-horizontal\" #addCategory=\"ngForm\" (ngSubmit)=\"onSubmit(addCategory.value)\">\r\n        <div class=\"form-group\">\r\n            <label for=\"urlString\" class=\"control-label col-sm-2\">Link (Url)</label>\r\n            <div class=\"col-sm-10\">\r\n                <input type=\"Text\" class=\"form-control\" id=\"urlString\"\r\n                       placeholder=\"paste in a link (url)\"\r\n                       [(ngModel)]=\"link.urlString\" name=\"urlString\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <div class=\"dropdown\">\r\n                <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\"\r\n                        id=\"categories\" data-toggle=\"dropdown\"\r\n                        aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                    Categories\r\n                </button>\r\n                <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                    <a class=\"dropdown-item\">Action</a>\r\n                    <a class=\"dropdown-item\">Another action</a>\r\n                    <a class=\"dropdown-item\">Something else here</a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label for=\"description\" class=\"control-label col-sm-2\">Description</label>\r\n            <div class=\"col-sm-10\">\r\n                <input type=\"Text\" class=\"form-control\" id=\"description\"\r\n                       placeholder=\"a category description\"\r\n                       [(ngModel)]=\"link.description\" name=\"description\" />\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <div class=\"col-sm-offset-2 col-sm-10\">\r\n                <button type=\"submit\"\r\n                        class=\"btn btn-primary\">\r\n                    Add\r\n                </button>\r\n                <button class=\"btn btn-secondary\"\r\n                        [routerLink]=\"['/links']\">\r\n                    Cancel\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n    <br />\r\n    <h2>{{pageTitle}}</h2>\r\n    <br />\r\n\r\n    <form class=\"form\" #addLink=\"ngForm\" (ngSubmit)=\"onSubmit(addLink.value)\">\r\n        <div class=\"forms-group\">\r\n                <label for=\"urlString\" class=\"control-label\">Link (Url)</label>\r\n                <div class=\"col-md-8\">\r\n                    <input type=\"Text\" class=\"form-control\" id=\"urlString\"\r\n                           placeholder=\"paste in a link (url)\"\r\n                           [(ngModel)]=\"link.urlString\" name=\"urlString\">\r\n                </div>\r\n        </div>\r\n\r\n        <div class=\"forms-group\">\r\n            <label for=\"category\" class=\"control-label\">Category</label>\r\n            <div class=\"col-md-8\">\r\n                <select class=\"custom-select col-md-8\" \r\n                        [(ngModel)]=\"selectedCategory.idCategory\"\r\n                        id=\"category\" name=\"selectedCategory\">\r\n                    <option selected>Choose category</option>\r\n                    <option *ngFor='let catItem of categories'\r\n                            value=\"{{catItem.idCategory}}\">\r\n                        {{catItem.categoryName}}\r\n                    </option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"forms-group\">\r\n            <label for=\"description\" class=\"control-label\">Description</label>\r\n            <div class=\"col-md-8\">\r\n                <input type=\"Text\" class=\"form-control\" id=\"description\"\r\n                       placeholder=\"a category description\"\r\n                       [(ngModel)]=\"link.description\" name=\"description\" />\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"forms-group\">\r\n            <label for=\"bestBefore\" class=\"control-label\">Best Before</label>\r\n            <div class=\"col-md-8\">\r\n                <input type=\"date\" class=\"form-control\" id=\"bestBefore\"\r\n                       placeholder=\"keep the link until...\"\r\n                       [(ngModel)]=\"link.bestBeforeDate\" name=\"bestBefore\" />\r\n            </div>\r\n        </div>\r\n\r\n        <br />\r\n\r\n        <div class=\"forms-group\">\r\n            <button type=\"submit\"\r\n                    class=\"btn btn-primary\">\r\n                Add\r\n            </button>\r\n            <button class=\"btn btn-secondary\"\r\n                    [routerLink]=\"['/links']\">\r\n                Cancel\r\n            </button>\r\n        </div>\r\n    </form>\r\n</div>"
 
 /***/ }),
 
@@ -508,9 +508,11 @@ var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var linkDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var link_1 = __webpack_require__("../../../../../ClientApp/Models/link.ts");
+var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
 var AddLinkComponent = /** @class */ (function () {
-    function AddLinkComponent(data, router) {
-        this.data = data;
+    function AddLinkComponent(linkDs, categoryDs, router) {
+        this.linkDs = linkDs;
+        this.categoryDs = categoryDs;
         this.router = router;
         this.pageTitle = 'Add new link';
         // If you don't want to have to specify all of the properties as part of the constructor
@@ -522,15 +524,38 @@ var AddLinkComponent = /** @class */ (function () {
     }
     AddLinkComponent.prototype.onSubmit = function (form) {
         return __awaiter(this, void 0, void 0, function () {
+            var t;
             return __generator(this, function (_a) {
-                console.log('you submitted value:', form);
-                console.log('isAddAction is', this.isAddAction);
-                console.log('link: Url', this.link.urlString);
-                console.log('link: Description', this.link.description);
-                // var t = await this.data.postCategory(this.category);
-                //console.log('putCategory', t);
-                this.router.navigate(['/categories']);
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        console.log('you submitted value:', form);
+                        console.log('isAddAction is', this.isAddAction);
+                        console.log('link: Url', this.link.urlString);
+                        console.log('link: Description', this.link.description);
+                        this.link.category = this.selectedCategory;
+                        return [4 /*yield*/, this.linkDs.postLink(this.link)];
+                    case 1:
+                        t = _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AddLinkComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.categoryDs.loadCategoriesAsync()];
+                    case 1:
+                        _a.categories = _b.sent();
+                        if (this.categories.length > 0) {
+                            this.selectedCategory = this.categories[0];
+                        }
+                        return [2 /*return*/];
+                }
             });
         });
     };
@@ -546,6 +571,7 @@ var AddLinkComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../ClientApp/app/links/addLink.component.html")
         }),
         __metadata("design:paramtypes", [linkDataService_1.LinkDataService,
+            categoryDataService_1.CategoryDataService,
             router_1.Router])
     ], AddLinkComponent);
     return AddLinkComponent;
@@ -576,35 +602,67 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var linkDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
 var LinksComponent = /** @class */ (function () {
-    function LinksComponent(data) {
-        this.data = data;
+    function LinksComponent(linkDs) {
+        this.linkDs = linkDs;
         this.tableHeader = 'Clipboard Links';
     }
     LinksComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.data.loadLinks().
-            subscribe(function (result) {
-            if (result) {
-                _this.links = result;
-            }
-            else {
-                //this.links = [{
-                //    link: "https://suchen.mobile.de/fahrzeuge/search.html?damageUnrepaired=NO_DAMAGE_UNREPAIRED&isSearchRequest=true&makeModelVariant1.makeId=17200&makeModelVariant1.modelDescription=se&makeModelVariant1.modelId=134&maxFirstRegistrationDate=1980-12-31&maxPowerAsArray=PS&minPowerAsArray=PS&scopeId=C&transmissions=AUTOMATIC_GEAR",
-                //    description: "Search for classing Mercedes W123 280 SE",
-                //    categoryName: "Car related",
-                //    bestBefore: "2018-04-30"
-                //}, 
-                //{
-                //    link: "https://suchen.mobile.de/fahrzeuge/details.html?id=252201547&damageUnrepaired=NO_DAMAGE_UNREPAIRED&isSearchRequest=true&makeModelVariant1.makeId=17200&makeModelVariant1.modelDescription=se&makeModelVariant1.modelId=134&maxFirstRegistrationDate=1980-12-31&pageNumber=1&scopeId=C&transmissions=AUTOMATIC_GEAR&action=topOfPage&top=3:3&searchId=94d62f01-b49f-344c-6a46-d8126b301948",
-                //    description: "Classic Red Mercedes 280SE",
-                //    categoryName: "car related",
-                //    bestBefore: "2018-04-30"
-                //}]
-            }
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, e_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 2, , 3]);
+                        _a = this;
+                        return [4 /*yield*/, this.linkDs.loadLinksAsync()];
+                    case 1:
+                        _a.links = _b.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        e_1 = _b.sent();
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
         });
     };
     LinksComponent = __decorate([
@@ -684,10 +742,30 @@ var CategoryDataService = /** @class */ (function () {
     function CategoryDataService(httpClient) {
         this.httpClient = httpClient;
     }
+    // typical Angular way to get data from a WebApi
     CategoryDataService.prototype.loadCategories = function () {
         return this.httpClient.get("/api/categories")
             .pipe(operators_1.tap(function (c) { return console.log(JSON.stringify(c)); }), operators_1.catchError(this.handleError));
     };
+    // error handler for catchError (see above)
+    CategoryDataService.prototype.handleError = function (err) {
+        console.log(err);
+        // in a real world app, we may send the server to some remote logging infrastructure
+        // instead of just logging it to the console
+        var errorMessage;
+        if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            errorMessage = "An error occurred: " + err.error.message;
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
+        }
+        console.error(errorMessage);
+        return new ErrorObservable_1.ErrorObservable(errorMessage);
+    };
+    // the more .NET style async way - but equally OK!
     CategoryDataService.prototype.loadCategoriesAsync = function () {
         return __awaiter(this, void 0, void 0, function () {
             var t, e_1, err;
@@ -713,6 +791,7 @@ var CategoryDataService = /** @class */ (function () {
             });
         });
     };
+    // adding a new category:
     CategoryDataService.prototype.postCategory = function (category) {
         return __awaiter(this, void 0, void 0, function () {
             var newGuid, e_2, err;
@@ -770,23 +849,6 @@ var CategoryDataService = /** @class */ (function () {
             });
         });
     };
-    CategoryDataService.prototype.handleError = function (err) {
-        console.log(err);
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        var errorMessage;
-        if (err.error instanceof Error) {
-            // A client-side or network error occurred. Handle it accordingly.
-            errorMessage = "An error occurred: " + err.error.message;
-        }
-        else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
-        }
-        console.error(errorMessage);
-        return new ErrorObservable_1.ErrorObservable(errorMessage);
-    };
     CategoryDataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.HttpClient])
@@ -812,19 +874,61 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = __webpack_require__("../../../common/esm5/http.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var ErrorObservable_1 = __webpack_require__("../../../../rxjs/_esm5/observable/ErrorObservable.js");
 var operators_1 = __webpack_require__("../../../../rxjs/_esm5/operators.js");
+var httpOptions = {
+    headers: new http_1.HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+};
 var LinkDataService = /** @class */ (function () {
     function LinkDataService(httpClient) {
         this.httpClient = httpClient;
     }
+    // typical Angular way to get data from a WebApi
     LinkDataService.prototype.loadLinks = function () {
         return this.httpClient.get("/api/links")
             .pipe(operators_1.catchError(this.handleError));
     };
+    // error handler for catchError (see above)
     LinkDataService.prototype.handleError = function (err) {
         console.log(err);
         // in a real world app, we may send the server to some remote logging infrastructure
@@ -841,6 +945,58 @@ var LinkDataService = /** @class */ (function () {
         }
         console.error(errorMessage);
         return new ErrorObservable_1.ErrorObservable(errorMessage);
+    };
+    // the more .NET style async way - but equally OK!
+    LinkDataService.prototype.loadLinksAsync = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var t, e_1, err;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        console.log("BEFORE getting categories.");
+                        return [4 /*yield*/, this.httpClient.get("/api/links").toPromise()];
+                    case 1:
+                        t = _a.sent();
+                        console.log("No error occured getting categories.");
+                        return [2 /*return*/, t];
+                    case 2:
+                        e_1 = _a.sent();
+                        if (e_1 instanceof http_1.HttpErrorResponse) {
+                            err = e_1;
+                            console.log("Error getting categories: ", err.message);
+                        }
+                        return [2 /*return*/, null];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    // adding a new link:
+    LinkDataService.prototype.postLink = function (link) {
+        return __awaiter(this, void 0, void 0, function () {
+            var newGuid, e_2, err;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        console.log("BEFORE putting link:", link.urlString);
+                        return [4 /*yield*/, this.httpClient.post("/api/links", link, httpOptions).toPromise()];
+                    case 1:
+                        newGuid = _a.sent();
+                        console.log("No error occured putting link. GUID ID is:", newGuid);
+                        return [2 /*return*/, newGuid];
+                    case 2:
+                        e_2 = _a.sent();
+                        if (e_2 instanceof http_1.HttpErrorResponse) {
+                            err = e_2;
+                            console.log("Error putting link: ", err.message);
+                        }
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
     };
     LinkDataService = __decorate([
         core_1.Injectable(),

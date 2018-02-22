@@ -20,6 +20,7 @@ export class CategoryDataService {
 
     public headers: HttpHeaders;
 
+    // typical Angular way to get data from a WebApi
     loadCategories() {
         return this.httpClient.get<Category[]>("/api/categories")
             .pipe(
@@ -28,6 +29,26 @@ export class CategoryDataService {
             );
     } 
 
+    // error handler for catchError (see above)
+    private handleError(err: HttpErrorResponse) {
+        console.log(err);
+        // in a real world app, we may send the server to some remote logging infrastructure
+        // instead of just logging it to the console
+        let errorMessage: string;
+        if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            errorMessage = `An error occurred: ${err.error.message}`;
+        } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            errorMessage = `Backend returned code ${err.status}, body was: ${err.error}`;
+        }
+        console.error(errorMessage);
+        return new ErrorObservable(errorMessage);
+    }
+
+
+    // the more .NET style async way - but equally OK!
     async loadCategoriesAsync(): Promise<Category[]> {
         try {
             console.log("BEFORE getting categories.");
@@ -44,6 +65,7 @@ export class CategoryDataService {
         }
     }
 
+    // adding a new category:
     async postCategory(category: Category): Promise<string> {
         try {
             console.log("BEFORE putting category:", category.categoryName);
@@ -83,22 +105,4 @@ export class CategoryDataService {
             }
         }
     }
-
-    private handleError(err: HttpErrorResponse) {
-        console.log(err);
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        let errorMessage: string;
-        if (err.error instanceof Error) {
-            // A client-side or network error occurred. Handle it accordingly.
-            errorMessage = `An error occurred: ${err.error.message}`;
-        } else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            errorMessage = `Backend returned code ${err.status}, body was: ${err.error}`;
-        }
-        console.error(errorMessage);
-        return new ErrorObservable(errorMessage);
-    }
-
 }

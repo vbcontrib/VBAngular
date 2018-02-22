@@ -7,6 +7,7 @@ Public Class Link
     Const ABBRIVIATE_TO_CHARACTERS = 27
 
     Private myUrlString As String
+    Private myUrlStringAbbreviated As String
 
     'This is our primary key field. It will, when send to the Client, not directly 
     'used - instead we will use the IDLinkString, so TypeScript can better
@@ -46,9 +47,9 @@ Public Class Link
         Set(value As String)
             myUrlString = value
             If value.Length > ABBRIVIATE_TO_CHARACTERS Then
-                UrlStringAbbreviated = value.Substring(0, ABBRIVIATE_TO_CHARACTERS) & "..."
+                myUrlStringAbbreviated = value.Substring(0, ABBRIVIATE_TO_CHARACTERS) & "..."
             Else
-                UrlStringAbbreviated = value
+                myUrlStringAbbreviated = value
             End If
         End Set
     End Property
@@ -56,6 +57,14 @@ Public Class Link
     'Not a field in the database, but we use it to transfer content to database
     <NotMapped>
     Public Property UrlStringAbbreviated As String
+        Get
+            Return myUrlStringAbbreviated
+        End Get
+        'Only UrlString can set this property, otherwise it get's overwritten in the serialization process, 
+        'since it is also returned from the Angular Client.
+        Set(value As String)
+        End Set
+    End Property
 
     <Column(Order:=4)>
     Public Property Description As String
@@ -65,4 +74,8 @@ Public Class Link
 
     <Column(Order:=6)>
     Public Property DateLastEdited As Date
+
+    Public Overrides Function ToString() As String
+        Return $"{Category?.CategoryName}: {UrlStringAbbreviated}"
+    End Function
 End Class

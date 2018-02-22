@@ -3,51 +3,60 @@
     <h2>{{pageTitle}}</h2>
     <br />
 
-    <form class="form-horizontal" #addCategory="ngForm" (ngSubmit)="onSubmit(addCategory.value)">
-        <div class="form-group">
-            <label for="urlString" class="control-label col-sm-2">Link (Url)</label>
-            <div class="col-sm-10">
-                <input type="Text" class="form-control" id="urlString"
-                       placeholder="paste in a link (url)"
-                       [(ngModel)]="link.urlString" name="urlString">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button"
-                        id="categories" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    Categories
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item">Action</a>
-                    <a class="dropdown-item">Another action</a>
-                    <a class="dropdown-item">Something else here</a>
+    <form class="form" #addLink="ngForm" (ngSubmit)="onSubmit(addLink.value)">
+        <div class="forms-group">
+                <label for="urlString" class="control-label">Link (Url)</label>
+                <div class="col-md-8">
+                    <input type="Text" class="form-control" id="urlString"
+                           placeholder="paste in a link (url)"
+                           [(ngModel)]="link.urlString" name="urlString">
                 </div>
+        </div>
+
+        <div class="forms-group">
+            <label for="category" class="control-label">Category</label>
+            <div class="col-md-8">
+                <select class="custom-select col-md-8" 
+                        [(ngModel)]="selectedCategory.idCategory"
+                        id="category" name="selectedCategory">
+                    <option selected>Choose category</option>
+                    <option *ngFor='let catItem of categories'
+                            value="{{catItem.idCategory}}">
+                        {{catItem.categoryName}}
+                    </option>
+                </select>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="description" class="control-label col-sm-2">Description</label>
-            <div class="col-sm-10">
+        <div class="forms-group">
+            <label for="description" class="control-label">Description</label>
+            <div class="col-md-8">
                 <input type="Text" class="form-control" id="description"
                        placeholder="a category description"
                        [(ngModel)]="link.description" name="description" />
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit"
-                        class="btn btn-primary">
-                    Add
-                </button>
-                <button class="btn btn-secondary"
-                        [routerLink]="['/links']">
-                    Cancel
-                </button>
+        <div class="forms-group">
+            <label for="bestBefore" class="control-label">Best Before</label>
+            <div class="col-md-8">
+                <input type="date" class="form-control" id="bestBefore"
+                       placeholder="keep the link until..."
+                       [(ngModel)]="link.bestBeforeDate" name="bestBefore" />
             </div>
+        </div>
+
+        <br />
+
+        <div class="forms-group">
+            <button type="submit"
+                    class="btn btn-primary">
+                Add
+            </button>
+            <button class="btn btn-secondary"
+                    [routerLink]="['/links']">
+                Cancel
+            </button>
         </div>
     </form>
 </div>
