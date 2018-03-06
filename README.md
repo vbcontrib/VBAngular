@@ -1,8 +1,10 @@
 
 # VBAngular
-Experiment: Let's try to create an Angular frontend with an ASP.NET Core/EF Core Backend...in Visual Basic!
+Let's try to create an Angular frontend with an ASP.NET Core/EF Core Backend...in Visual Basic!
 
 ## Prerequisites before getting the project from GitHub
+* Make sure you have .NET 4.7 installed. You will need .NET 4.7, because the solution need to reference a .NET STandard 2.0 DLL from a Windows Forms project. To install or check .NET 4.7, use the Visual Studio Installer.
+
 * Check, if you have installed (or installed the latest version) of npm:
 
 ```
@@ -15,6 +17,12 @@ C:\Users\klauslo>npm --version
 ```
 npm install -g @angular/cli
 ```
+
+## Cloning this Repo GitHub
+You can either use the Team Explorer in Visual Studio to clone this repository, or you use the Visual Studio Developer Command Prompt.
+* Open the Command Prompt.
+* Navigate to the base folder where you store your GitHub projects - e.g. `GitHubDev`
+* Type `git clone https://github.com/KlausLoeffelmann/VBAngular`. This created the subfolder 'VbAngular' and clones the repo into that folder.
 
 ## Prerequisites after getting the project from GitHub
 * Change into the project directory, and further to the project subfolder `RoamingClipboardApi`.
