@@ -1,9 +1,8 @@
-t
 # VBAngular
 Let's try to create an Angular frontend with an ASP.NET Core/EF Core Backend...in Visual Basic!
 
 ## Prerequisites before getting the project from GitHub
-* Make sure you have .NET 4.7 installed. You will need .NET 4.7, because the solution need to reference a .NET STandard 2.0 DLL from a Windows Forms project, and this is only possible with .NET 4.7. To install or check for .NET 4.7, use the Visual Studio Installer.
+* Make sure you have .NET 4.7 installed. You will need .NET 4.7, because the solution need to reference a .NET STandard 2.0 DLL from a Windows Forms project, and the best way to make sure, this will be working reliably in the future, will be to use the .NET Framework .NET 4.7. To install or check for .NET 4.7, use the Visual Studio Installer. (Tip: Use the Cortana Search Box, to find and open the Visual Studio Installer)
 
 * Check, if you have installed (or installed the latest version) of npm:
 
