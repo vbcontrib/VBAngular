@@ -18,11 +18,10 @@ webpackEmptyAsyncContext.id = "../../../../../ClientApp/$$_lazy_route_resource l
 /***/ }),
 
 /***/ "../../../../../ClientApp/Models/catergory.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Category; });
 var Category = /** @class */ (function () {
     // If desired, you can make some of these optional by adding "?" such as links?: Link[]
     // But note that the optional properties must be at the end.
@@ -37,17 +36,16 @@ var Category = /** @class */ (function () {
     }
     return Category;
 }());
-exports.Category = Category;
+
 
 
 /***/ }),
 
 /***/ "../../../../../ClientApp/Models/link.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Link; });
 var Link = /** @class */ (function () {
     function Link(idLink, category, bestBefore, urlString, urlStringAbbreviated, description, dateCreated, dateLastEdited) {
         this.idLink = idLink;
@@ -61,7 +59,7 @@ var Link = /** @class */ (function () {
     }
     return Link;
 }());
-exports.Link = Link;
+
 
 
 /***/ }),
@@ -74,10 +72,13 @@ module.exports = "<div>\r\n    <nav class=\"navbar navbar-expand-lg navbar-dark 
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/app.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_categoryDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -122,10 +123,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
-var router_1 = __webpack_require__("../../../router/esm5/router.js");
+
+
+
 var AppComponent = /** @class */ (function () {
     function AppComponent(data, router) {
         this.data = data;
@@ -151,91 +151,107 @@ var AppComponent = /** @class */ (function () {
         });
     };
     AppComponent = __decorate([
-        core_1.Component({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'roamclip-root',
             template: __webpack_require__("../../../../../ClientApp/app/app.component.html"),
             styles: ["\nthead {\n    color: #202020;\n}"]
         }),
-        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService,
-            router_1.Router])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_categoryDataService__["a" /* CategoryDataService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
-exports.AppComponent = AppComponent;
+
 
 
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/app.module.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_bootstrap__ = __webpack_require__("../../../../ngx-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("../../../../../ClientApp/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__categories_categories_component__ = __webpack_require__("../../../../../ClientApp/app/categories/categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__categories_addCategory_component__ = __webpack_require__("../../../../../ClientApp/app/categories/addCategory.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__links_links_component__ = __webpack_require__("../../../../../ClientApp/app/links/links.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_categoryDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__shared_linkDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__links_addLink_component__ = __webpack_require__("../../../../../ClientApp/app/links/addLink.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var platform_browser_1 = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var ngx_bootstrap_1 = __webpack_require__("../../../../ngx-bootstrap/index.js");
-var http_1 = __webpack_require__("../../../common/esm5/http.js");
-var router_1 = __webpack_require__("../../../router/esm5/router.js");
-var app_component_1 = __webpack_require__("../../../../../ClientApp/app/app.component.ts");
-var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
-var categories_component_1 = __webpack_require__("../../../../../ClientApp/app/categories/categories.component.ts");
-var addCategory_component_1 = __webpack_require__("../../../../../ClientApp/app/categories/addCategory.component.ts");
-var links_component_1 = __webpack_require__("../../../../../ClientApp/app/links/links.component.ts");
-var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
-var linkDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
-var addLink_component_1 = __webpack_require__("../../../../../ClientApp/app/links/addLink.component.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+
 var appRoutes = [
-    { path: 'categories', component: categories_component_1.CategoriesComponent },
-    { path: 'addCategory', component: addCategory_component_1.AddCategoryComponent },
-    { path: 'links', component: links_component_1.LinksComponent },
-    { path: 'addLink', component: addLink_component_1.AddLinkComponent },
+    { path: 'categories', component: __WEBPACK_IMPORTED_MODULE_7__categories_categories_component__["a" /* CategoriesComponent */] },
+    { path: 'addCategory', component: __WEBPACK_IMPORTED_MODULE_8__categories_addCategory_component__["a" /* AddCategoryComponent */] },
+    { path: 'links', component: __WEBPACK_IMPORTED_MODULE_9__links_links_component__["a" /* LinksComponent */] },
+    { path: 'addLink', component: __WEBPACK_IMPORTED_MODULE_12__links_addLink_component__["a" /* AddLinkComponent */] },
     { path: '', redirectTo: 'links', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        core_1.NgModule({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                app_component_1.AppComponent,
-                categories_component_1.CategoriesComponent,
-                addCategory_component_1.AddCategoryComponent,
-                links_component_1.LinksComponent,
-                addLink_component_1.AddLinkComponent
+                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__categories_categories_component__["a" /* CategoriesComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__categories_addCategory_component__["a" /* AddCategoryComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__links_links_component__["a" /* LinksComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__links_addLink_component__["a" /* AddLinkComponent */]
             ],
             imports: [
-                router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),
-                ngx_bootstrap_1.AlertModule.forRoot(),
-                platform_browser_1.BrowserModule,
-                forms_1.FormsModule,
-                http_1.HttpClientModule
+                __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes, { enableTracing: true }),
+                __WEBPACK_IMPORTED_MODULE_2_ngx_bootstrap__["a" /* AlertModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */]
             ],
             providers: [
-                categoryDataService_1.CategoryDataService,
-                linkDataService_1.LinkDataService
+                __WEBPACK_IMPORTED_MODULE_10__shared_categoryDataService__["a" /* CategoryDataService */],
+                __WEBPACK_IMPORTED_MODULE_11__shared_linkDataService__["a" /* LinkDataService */]
             ],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
 }());
-exports.AppModule = AppModule;
+
 
 
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/categories/addCategory.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddCategoryComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_categoryDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Models_catergory__ = __webpack_require__("../../../../../ClientApp/Models/catergory.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -280,11 +296,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
-var catergory_1 = __webpack_require__("../../../../../ClientApp/Models/catergory.ts");
-var router_1 = __webpack_require__("../../../router/esm5/router.js");
+
+
+
+
 var AddCategoryComponent = /** @class */ (function () {
     function AddCategoryComponent(data, router) {
         this.data = data;
@@ -292,7 +307,7 @@ var AddCategoryComponent = /** @class */ (function () {
         this.pageTitle = 'Add new category';
         // If you don't want to have to specify all of the properties as part of the constructor
         // you can make them optional in the model using "?"
-        this.category = new catergory_1.Category("", "Test-Category", "Test description", null, new Date(), new Date(), new Date());
+        this.category = new __WEBPACK_IMPORTED_MODULE_2__Models_catergory__["a" /* Category */]("", "Test-Category", "Test description", null, new Date(), new Date(), new Date());
         // I don't normally see a Cancel button defined with type=submit.
         // Rather, the cancel is set to type=button and it uses a routerLink to navigate back.
         this.isAddAction = false;
@@ -323,16 +338,16 @@ var AddCategoryComponent = /** @class */ (function () {
         this.data.saveCategory(this.category).subscribe(function () { return _this.router.navigate(['/categories']); });
     };
     AddCategoryComponent = __decorate([
-        core_1.Component({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'roamclip-addCategory',
             template: __webpack_require__("../../../../../ClientApp/app/categories/addcategory.component.html")
         }),
-        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService,
-            router_1.Router])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_categoryDataService__["a" /* CategoryDataService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
     ], AddCategoryComponent);
     return AddCategoryComponent;
 }());
-exports.AddCategoryComponent = AddCategoryComponent;
+
 
 
 /***/ }),
@@ -352,10 +367,12 @@ module.exports = "<div class='panel panel/primary'>\r\n    <div class='panel-hea
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/categories/categories.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriesComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_categoryDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -400,9 +417,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
+
+
 var CategoriesComponent = /** @class */ (function () {
     function CategoriesComponent(categoryDs) {
         this.categoryDs = categoryDs;
@@ -434,15 +450,15 @@ var CategoriesComponent = /** @class */ (function () {
         });
     };
     CategoriesComponent = __decorate([
-        core_1.Component({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'roamclip-categories',
             template: __webpack_require__("../../../../../ClientApp/app/categories/categories.component.html")
         }),
-        __metadata("design:paramtypes", [categoryDataService_1.CategoryDataService])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_categoryDataService__["a" /* CategoryDataService */]])
     ], CategoriesComponent);
     return CategoriesComponent;
 }());
-exports.CategoriesComponent = CategoriesComponent;
+
 
 
 /***/ }),
@@ -455,10 +471,15 @@ module.exports = "<div class=\"container\">\r\n    <br />\r\n    <h2>{{pageTitle
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/links/addLink.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddLinkComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_linkDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Models_link__ = __webpack_require__("../../../../../ClientApp/Models/link.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_categoryDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -503,12 +524,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var linkDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
-var router_1 = __webpack_require__("../../../router/esm5/router.js");
-var link_1 = __webpack_require__("../../../../../ClientApp/Models/link.ts");
-var categoryDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/categoryDataService.ts");
+
+
+
+
+
 var AddLinkComponent = /** @class */ (function () {
     function AddLinkComponent(linkDs, categoryDs, router) {
         this.linkDs = linkDs;
@@ -517,7 +537,7 @@ var AddLinkComponent = /** @class */ (function () {
         this.pageTitle = 'Add new link';
         // If you don't want to have to specify all of the properties as part of the constructor
         // you can make them optional in the model using "?"
-        this.link = new link_1.Link("", null, null, "Url", "", "Description", new Date(), new Date());
+        this.link = new __WEBPACK_IMPORTED_MODULE_3__Models_link__["a" /* Link */]("", null, null, "Url", "", "Description", new Date(), new Date());
         // I don't normally see a Cancel button defined with type=submit.
         // Rather, the cancel is set to type=button and it uses a routerLink to navigate back.
         this.isAddAction = false;
@@ -566,17 +586,17 @@ var AddLinkComponent = /** @class */ (function () {
         //);
     };
     AddLinkComponent = __decorate([
-        core_1.Component({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'roamclip-addCategory',
             template: __webpack_require__("../../../../../ClientApp/app/links/addLink.component.html")
         }),
-        __metadata("design:paramtypes", [linkDataService_1.LinkDataService,
-            categoryDataService_1.CategoryDataService,
-            router_1.Router])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_linkDataService__["a" /* LinkDataService */],
+            __WEBPACK_IMPORTED_MODULE_4__shared_categoryDataService__["a" /* CategoryDataService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
     ], AddLinkComponent);
     return AddLinkComponent;
 }());
-exports.AddLinkComponent = AddLinkComponent;
+
 
 
 /***/ }),
@@ -589,10 +609,12 @@ module.exports = "<div class='panel panel/primary'>\r\n    <div class='panel-hea
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/links/links.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinksComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_linkDataService__ = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -637,9 +659,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var linkDataService_1 = __webpack_require__("../../../../../ClientApp/app/shared/linkDataService.ts");
+
+
 var LinksComponent = /** @class */ (function () {
     function LinksComponent(linkDs) {
         this.linkDs = linkDs;
@@ -666,24 +687,28 @@ var LinksComponent = /** @class */ (function () {
         });
     };
     LinksComponent = __decorate([
-        core_1.Component({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'roamclip-links',
             template: __webpack_require__("../../../../../ClientApp/app/links/links.component.html")
         }),
-        __metadata("design:paramtypes", [linkDataService_1.LinkDataService])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_linkDataService__["a" /* LinkDataService */]])
     ], LinksComponent);
     return LinksComponent;
 }());
-exports.LinksComponent = LinksComponent;
+
 
 
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/shared/categoryDataService.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryDataService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_ErrorObservable__ = __webpack_require__("../../../../rxjs/_esm5/observable/ErrorObservable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__("../../../../rxjs/_esm5/operators.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -728,13 +753,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_1 = __webpack_require__("../../../common/esm5/http.js");
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var ErrorObservable_1 = __webpack_require__("../../../../rxjs/_esm5/observable/ErrorObservable.js");
-var operators_1 = __webpack_require__("../../../../rxjs/_esm5/operators.js");
+
+
+
+
 var httpOptions = {
-    headers: new http_1.HttpHeaders({
+    headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["d" /* HttpHeaders */]({
         'Content-Type': 'application/json'
     })
 };
@@ -745,7 +769,7 @@ var CategoryDataService = /** @class */ (function () {
     // typical Angular way to get data from a WebApi
     CategoryDataService.prototype.loadCategories = function () {
         return this.httpClient.get("/api/categories")
-            .pipe(operators_1.tap(function (c) { return console.log(JSON.stringify(c)); }), operators_1.catchError(this.handleError));
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["b" /* tap */])(function (c) { return console.log(JSON.stringify(c)); }), Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError));
     };
     // error handler for catchError (see above)
     CategoryDataService.prototype.handleError = function (err) {
@@ -763,7 +787,7 @@ var CategoryDataService = /** @class */ (function () {
             errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
         }
         console.error(errorMessage);
-        return new ErrorObservable_1.ErrorObservable(errorMessage);
+        return new __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_ErrorObservable__["a" /* ErrorObservable */](errorMessage);
     };
     // the more .NET style async way - but equally OK!
     CategoryDataService.prototype.loadCategoriesAsync = function () {
@@ -781,7 +805,7 @@ var CategoryDataService = /** @class */ (function () {
                         return [2 /*return*/, t];
                     case 2:
                         e_1 = _a.sent();
-                        if (e_1 instanceof http_1.HttpErrorResponse) {
+                        if (e_1 instanceof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpErrorResponse */]) {
                             err = e_1;
                             console.log("Error getting categories: ", err.message);
                         }
@@ -807,7 +831,7 @@ var CategoryDataService = /** @class */ (function () {
                         return [2 /*return*/, newGuid];
                     case 2:
                         e_2 = _a.sent();
-                        if (e_2 instanceof http_1.HttpErrorResponse) {
+                        if (e_2 instanceof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpErrorResponse */]) {
                             err = e_2;
                             console.log("Error putting category: ", err.message);
                         }
@@ -819,9 +843,9 @@ var CategoryDataService = /** @class */ (function () {
     };
     // Added an example save using Observables.
     CategoryDataService.prototype.saveCategory = function (category) {
-        var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
+        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["d" /* HttpHeaders */]({ 'Content-Type': 'application/json' });
         return this.httpClient.post('/api/categories', category, { headers: headers })
-            .pipe(operators_1.tap(function (data) { return console.log('createCategory: ' + JSON.stringify(data)); }), operators_1.catchError(this.handleError));
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["b" /* tap */])(function (data) { return console.log('createCategory: ' + JSON.stringify(data)); }), Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError));
     };
     //TODO: This has to go in a dedicated DataService.
     CategoryDataService.prototype.createDemoData = function () {
@@ -839,7 +863,7 @@ var CategoryDataService = /** @class */ (function () {
                         return [2 /*return*/, result];
                     case 2:
                         e_3 = _a.sent();
-                        if (e_3 instanceof http_1.HttpErrorResponse) {
+                        if (e_3 instanceof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpErrorResponse */]) {
                             err = e_3;
                             console.log("Error requesting to generate demodata.", err.message);
                         }
@@ -850,21 +874,25 @@ var CategoryDataService = /** @class */ (function () {
         });
     };
     CategoryDataService = __decorate([
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.HttpClient])
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
     ], CategoryDataService);
     return CategoryDataService;
 }());
-exports.CategoryDataService = CategoryDataService;
+
 
 
 /***/ }),
 
 /***/ "../../../../../ClientApp/app/shared/linkDataService.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinkDataService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_ErrorObservable__ = __webpack_require__("../../../../rxjs/_esm5/observable/ErrorObservable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__("../../../../rxjs/_esm5/operators.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -909,13 +937,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var http_1 = __webpack_require__("../../../common/esm5/http.js");
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var ErrorObservable_1 = __webpack_require__("../../../../rxjs/_esm5/observable/ErrorObservable.js");
-var operators_1 = __webpack_require__("../../../../rxjs/_esm5/operators.js");
+
+
+
+
 var httpOptions = {
-    headers: new http_1.HttpHeaders({
+    headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["d" /* HttpHeaders */]({
         'Content-Type': 'application/json'
     })
 };
@@ -926,7 +953,7 @@ var LinkDataService = /** @class */ (function () {
     // typical Angular way to get data from a WebApi
     LinkDataService.prototype.loadLinks = function () {
         return this.httpClient.get("/api/links")
-            .pipe(operators_1.catchError(this.handleError));
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError));
     };
     // error handler for catchError (see above)
     LinkDataService.prototype.handleError = function (err) {
@@ -944,7 +971,7 @@ var LinkDataService = /** @class */ (function () {
             errorMessage = "Backend returned code " + err.status + ", body was: " + err.error;
         }
         console.error(errorMessage);
-        return new ErrorObservable_1.ErrorObservable(errorMessage);
+        return new __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_ErrorObservable__["a" /* ErrorObservable */](errorMessage);
     };
     // the more .NET style async way - but equally OK!
     LinkDataService.prototype.loadLinksAsync = function () {
@@ -962,7 +989,7 @@ var LinkDataService = /** @class */ (function () {
                         return [2 /*return*/, t];
                     case 2:
                         e_1 = _a.sent();
-                        if (e_1 instanceof http_1.HttpErrorResponse) {
+                        if (e_1 instanceof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpErrorResponse */]) {
                             err = e_1;
                             console.log("Error getting categories: ", err.message);
                         }
@@ -988,7 +1015,7 @@ var LinkDataService = /** @class */ (function () {
                         return [2 /*return*/, newGuid];
                     case 2:
                         e_2 = _a.sent();
-                        if (e_2 instanceof http_1.HttpErrorResponse) {
+                        if (e_2 instanceof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpErrorResponse */]) {
                             err = e_2;
                             console.log("Error putting link: ", err.message);
                         }
@@ -999,27 +1026,26 @@ var LinkDataService = /** @class */ (function () {
         });
     };
     LinkDataService = __decorate([
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.HttpClient])
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
     ], LinkDataService);
     return LinkDataService;
 }());
-exports.LinkDataService = LinkDataService;
+
 
 
 /***/ }),
 
 /***/ "../../../../../ClientApp/environments/environment.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.environment = {
+var environment = {
     production: false
 };
 
@@ -1027,19 +1053,22 @@ exports.environment = {
 /***/ }),
 
 /***/ "../../../../../ClientApp/main.ts":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/esm5/platform-browser-dynamic.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("../../../../../ClientApp/app/app.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../ClientApp/environments/environment.ts");
 
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var platform_browser_dynamic_1 = __webpack_require__("../../../platform-browser-dynamic/esm5/platform-browser-dynamic.js");
-var app_module_1 = __webpack_require__("../../../../../ClientApp/app/app.module.ts");
-var environment_1 = __webpack_require__("../../../../../ClientApp/environments/environment.ts");
-if (environment_1.environment.production) {
-    core_1.enableProdMode();
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* enableProdMode */])();
 }
-platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule)
+Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
 
 
