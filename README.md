@@ -1,5 +1,5 @@
 # VBAngular
-Let's try to create an Angular frontend with an ASP.NET Core/EF Core Backend...in Visual Basic!
+Let's create an Angular frontend with an ASP.NET Core/EF Core Backend...in Visual Basic!
 
 ## Prerequisites before getting the project from GitHub
 * We suggest, you have at least .NET 4.7 (better: 4.7.2) installed. You will need .NET 4.7, because the solution need to reference a .NET Standard 2.x DLL from a Windows Forms project, and the best way to make sure, this will be working reliably in the future, will be to use the .NET Framework .NET 4.7. To install or check for .NET 4.7, use the Visual Studio Installer. (Tip: Use the Cortana Search Box, to find and open the Visual Studio Installer)
@@ -62,4 +62,4 @@ To use the solutions's DB migration project to create the database, perform the 
 * Wait for the database to be created.
 * Finally, set _RoamingWebApi_ as the startproject, run and test it in the browser.
 
-(NOTE: Development is in progress, it is not ready yet, there are still a few bugs and hick-ups. Pull requests are welcome!)
+(NOTE: We can still add features here, if we want to. This demo works all right, but it is not necessarily ready yet, so: pull requests are welcome!)
